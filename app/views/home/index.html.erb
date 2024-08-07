@@ -1,0 +1,209 @@
+<style>
+	#background-photo {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100% ; /* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fill; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+  
+#photo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 100% ;
+  background-color: rgba(255, 255, 255, 0.88); /* Overlay color */
+  z-index: -999;
+}
+
+.landing-content {
+	margin-left: 10%;
+	margin-top: 10%;
+	min-height: 70vh;
+	position: relative;
+}
+
+.header1 {
+	font-family: 'Outfit';
+	color: #4A4A4A;
+	font-size: 5vw;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	line-height: .8;
+	font-weight: 900;
+}
+
+.content-text {
+	font-family: 'Outfit';
+	font-size: 2.5vw;
+	color: #4A4A4A;
+	font-weight: 100;
+	margin-left: 2%;
+	margin-top: 1%;
+	padding-top: 0;
+}
+
+.h1span {
+	font-size: 3vw;
+	margin-top: 0;
+	padding-top: 0;
+	font-weight: 450;
+}
+
+.close {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.header3 {
+	font-family: 'Outfit';
+	color: #778AC6;
+	font-size: 2.75vw;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	padding-top: 1%;
+	margin-top: 3%;
+}
+
+.reserve-button {
+	color: whitesmoke;
+	background-color: #E55F25;
+	border: none;
+	border-radius: 4px;
+	font-size: 1vw;
+	font-family: sans-serif;
+	font-weight: 100;
+	text-decoration: none;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	margin-left: 3%;
+	margin-top: 2%;
+}
+
+.location-content {
+	background-color: #E9F5FF;
+	min-height: 60vh;
+	width: 102vw;
+	position: relative;
+	display: flex;
+	padding-bottom: 5%;
+}
+
+.location-left, .location-right {
+	flex: 1;
+}
+
+.indented {
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+.map {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  margin-left: 10%;
+  margin-top: 2%;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 450;
+  font-size: 1.2vw;
+  color: #4A4A4A;
+  width: 10em;
+}
+
+.map img {
+  margin-right: 10px; /* Add some spacing between image and text */
+}
+
+.map:hover {
+	transform: scale(1.025);
+}
+
+
+.map-image {
+	width: 70%;
+	height: auto;
+	margin-left: 15%;
+	padding-top: 10%;
+}
+
+.map-text {
+	font-size: 1.5vw;
+	font-family: sans-serif;
+	font-weight: 450;
+	color: #4A4A4A;
+	margin-left: 10%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.special {
+  height: 10vw;  /* Adjust as needed for size */
+  width: 10vw;   /* Adjust as needed for size */
+  background-color: red;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  clip-path: polygon(20% 67%, 57% 100%, 94% 68%, 57% 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.special-text {
+  padding: 10%;
+  font-family: sans-serif;
+  font-size: 1vw;
+  color: white;
+  text-align: center;  /* Center text inside the star */
+}
+
+.map-icon {
+	height: 2vw;
+}
+
+</style>
+
+	<% @specials.each do |special| %>
+      <div class = 'special'>
+        <p class = 'special-text'><%= special.info %></p>
+      </div>
+    <% end %>
+
+<%= image_tag 'bg.jpeg', id: 'background-photo' %>
+<div id='photo-overlay'></div>
+
+<div class = 'landing-content'>
+
+
+
+
+	<h1 class = 'header1'>Get on the water<br><span class = 'h1span'>&nbsp&nbsp&nbspLet the adventure begin</span></h1>
+	<h3 class = 'header3'>Check out our unbeatable deals!</h3>
+	<p class = 'content-text' style = 'font-weight: 400;'>Planning for a weekend or a holiday?</p>
+	<%= link_to 'Book Now', reservations_reserve_path, class: 'reserve-button'%>
+</div>
+
+<div class = 'location-content'>
+	<div class = 'location-left'>
+		<p class = 'content-text indented' style = 'font-weight: 300;'>We're local in Charlotte and just a short drive from anywhere in the Charlotte Metro Area!</p>
+		<p class = 'map-text'>1400 Richmond Pl<br>Charlotte, NC 28209</p>
+		<a href="http://maps.apple.com/?address=1400+Richmond+Pl,Charlotte,NC,28209" class = 'map'><%= image_tag 'apple.svg'%> Apple Map</a>
+		<a href="https://www.google.com/maps/search/?api=1&query=1400+Richmond+Pl,Charlotte,NC,28209" class = 'map'><%= image_tag 'google.svg'%> Google Map</a>
+
+
+		
+	</div>
+	<div class = 'location-right'>
+		<%= image_tag 'map.png', class: 'map-image'%>
+		
+	</div>
+	
+</div>

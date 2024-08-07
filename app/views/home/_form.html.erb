@@ -1,0 +1,12 @@
+<%= form_with model: model_instance, url: update_path, method: :patch do |form| %>
+  <% model_instance.attribute_names.each do |attr| %>
+    <% next if ['id', 'created_at', 'updated_at'].include?(attr) %>
+    <div>
+      <%= form.label attr %>
+      <%= form.text_field attr %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit "Update" %>
+  </div>
+<% end %>

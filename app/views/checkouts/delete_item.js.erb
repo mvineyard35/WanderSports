@@ -1,0 +1,12 @@
+// app/views/checkouts/delete_item.js.erb
+
+// Remove the deleted cart item from the DOM and update the subtotal
+var cartItemElement = document.getElementById('cart_item_<%= @cart_item.id %>');
+var subtotalElement = document.getElementById('subtotal');
+
+<% new_subtotal = @cart_items.sum { |item| item.quantity * item.price } %>
+
+if (cartItemElement && subtotalElement) {
+  cartItemElement.remove();
+  subtotalElement.innerHTML = "<%= number_to_currency(new_subtotal, unit: 'USD') %>";
+}

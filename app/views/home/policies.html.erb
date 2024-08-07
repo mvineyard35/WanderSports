@@ -1,0 +1,172 @@
+<style>
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100%;/* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fit; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+  
+#image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 200% ;
+  background-color: rgba(226, 242, 255, 0.4); /* Overlay color */
+  z-index: -999;
+}
+	.content {
+	min-height: 100vh;
+	width: 100vw;
+	position: relative;
+
+}
+	.header {
+	font-family: sans-serif;
+	font-weight: 400;
+	color: #4A4A4A;
+	font-size: 4vw;
+	margin-top: 10%;
+	margin-left: 10%;
+	width: 80%;
+}
+
+.text {
+	font-family: sans-serif;
+	font-weight: 100;
+	color: #4A4A4A;
+	text-align: justify;
+	width: 80%;
+	margin: auto;
+	font-size: 1.5vw;
+	margin-top: 2%;
+}
+
+.orange {
+	color: #E55F25;
+	font-weight: 450;
+}
+
+.info-container {
+  position: relative;
+  width: 90vw;
+  padding-top: 2%;
+  padding-bottom: 10%;
+}
+
+.info5 {
+  margin-left: 10%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.info52 {
+  margin-left: 10%;
+  display: flex;
+  display: inline-flex;
+  margin-top: 3%;
+}
+
+.text5 {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1.5vw;
+  color: #4A4A4A;
+  padding-left: 1%;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.orange-c, .blue-c {
+	display: inline-block;
+	margin-right: 1%;
+	height: 1em;
+	vertical-align: middle;
+}
+</style>
+
+<%= image_tag 'book-bg.png', id: 'background-image' %>
+<div id='image-overlay'></div>
+
+<div class = 'content'>
+
+<p class = 'header'>Policies</p>
+<p class = 'text'>Welcome to Wander Sports! We take pride in providing our customers with a safe and enjoyable experience while
+out on the water.</p>
+
+<p class = 'text'>To ensure the safety of our customers and the longevity of our equipment, we have established the following policies:</p>
+<div class = 'info-container'>
+<div class = 'info5'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Safety Policy:</span> The safety of our customers is our top priority. All customers must wear a personal flotation device (PFD) while using our
+equipment. In addition, customers must be able to swim and have basic knowledge of paddling techniques. We also reserve the right to deny
+rental to anyone who we believe may be under the influence of drugs or alcohol.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class:'orange-c'%>
+<p class = "text5"><span class = 'orange'>Equipment Damage Policy:</span> Our inflatable stand up paddle boards are high-quality and durable, but they still require proper care to maintain
+their condition. We expect our customers to treat our equipment with respect and to avoid any intentional damage. We prohibit the use of our
+SUPs in shallow water, near rocks, or in any other areas where the equipment could be damaged. In the event that our equipment is damaged
+due to negligence or misuse, the customer will be responsible for repair or replacement costs.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Rental Agreement:</span> Before using our equipment, all customers must sign a rental agreement that outlines our policies and provides important
+safety information. This agreement includes a waiver of liability and a statement acknowledging that the customer has read and understands
+our policies.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Safety Instruction:</span> We will provide a brief safety instruction video for customers before use of the equipment. This instruction will cover
+inflation/deflation of the board, basic paddling techniques, safety rules, and emergency procedures.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Rental Periods:</span> Our rental periods are typically for a half-day or full-day. Customers are responsible for returning the equipment at the end of
+the rental period. Late fees may apply for equipment returned after the agreed-upon time.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Reservations:</span> We strongly encourage customers to make reservations in advance to ensure availability. Reservations can be made online or by
+phone.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Age Restrictions:</span> Anyone over the age of 18 or a minor accompanied by their respective adult guardian may rent our equipment upon signing a
+Release of Liability waiver/Hold Harmless Agreement.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Payment:</span> We accept all Credit Cards, cash, venmo, apple pay or pay online once you book your activity. A credit card pre-authorization hold of
+$100 is required and will be released upon the return of the rental equipment in good condition.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Reservation Requirements:</span> All renters must provide a valid form of ID upon pick up for a single rider or just one for a group. Anyone over the
+age of 18 or a minor accompanied by their respective adult guardian may rent our equipment.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'orange-carat.svg', class: 'orange-c'%>
+<p class = "text5"><span class = 'orange'>Cancellations/Rescheduling/Refunds:</span> Cancellations made 5 days or more before your reserved date are eligible for a full refund, less a 10%
+processing fee.<br>Cancellations made between 2 - 5 days from your reserved date will receive a 50% refund. Cancellations made within 48 hours from your
+reserved date will receive NO refund, a credit can be provided only if the equipment is rebooked by another party.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'blue-carat.svg', class: 'blue-c'%>
+<p class = "text5">NO SHOWS are charged in full for the rental period reserved. Any party that has not arrived by the scheduled time of the rental shall be
+deemed a NO SHOW. We are flexible; if you are running late, please just let us know.<br>We reserve the right to cancel your reservation for violations to our policies.</p>
+</div>
+<div class = 'info52'>
+	<%= image_tag 'blue-carat.svg', class: 'blue-c'%>
+<p class = 'text5'>We reserve the right, solely at our discretion, to reschedule and/or cancel your reservation in the event of inclement weather. Reservations
+cancelled due to weather (or any other VALID and APPROVED reason) during the rental period will be given a voucher for credit toward use of
+same or similar piece of equipment at later date or time</p>
+</div>
+<p class = 'text' style = 'margin-left: 12.7%;'>We know it's a lot, but by following these policies, we can provide a safe and enjoyable experience for our customers while also maintaining the quality of our equipment.  We appreciate your cooperation and look forward to serving you.</p>
+</div>
+</div>

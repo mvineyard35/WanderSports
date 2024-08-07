@@ -1,0 +1,135 @@
+<style>
+  .form {
+    background-color: lightblue;
+    width: 25%;
+    padding: 3%;
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+
+  .form-text {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 1.5vw;
+  }
+
+  .button {
+    margin-top: 2%;
+  }
+
+  .link-div {
+    margin-left: 10%;
+    padding-bottom: 5%;
+    margin-top: 2%;
+  }
+
+  .link-button {
+    text-decoration: none;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: darkblue;
+    border-radius: 4px;
+    color: whitesmoke;
+  }
+
+.td {
+  padding: 1%;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+
+<% if user_signed_in? %>
+
+<div class = 'container'>
+
+<div class = 'form'>
+  <h1>Images</h1>
+  <p class = 'form-text'>This is to add images</p>
+  <%= form_with url: home_create_image_path, method: :post do %>
+  <div class = 'td'>
+    <%= label_tag :image, "Image" %>
+    <%= text_field_tag :image %>
+  </div>
+  <div>
+    <%= submit_tag "Save Image", class: 'button' %>
+  </div>
+<% end %>
+
+</div>
+
+<div class = 'form'>
+  <h1>Special Message</h1>
+  <p class = 'form-text'>Any special information you want to temporarily display.<br>Could be special sale, holiday hours</p>
+  <%= form_with url: home_create_special_path, method: :post do %>
+  <div class = 'td'>
+    <%= label_tag :info, "Info" %>
+    <%= text_field_tag :info %>
+  </div>
+  <div>
+    <%= submit_tag "Create Special", class: 'button' %>
+  </div>
+<% end %>
+
+</div>
+
+<div class = 'form'>
+  <h1>Inventory</h1>
+  <p class = 'form-text'>This is for you inventory, if you add any items you can submit them here</p>
+	<%= form_with url: home_create_inventory_path, method: :post do %>
+  <div class = 'td'>
+    <%= label_tag :equipment, "Equipment" %>
+    <%= text_field_tag :equipment %>
+  </div>
+  <div class = 'td'>
+    <%= label_tag :quantity, "Quantity" %>
+    <%= number_field_tag :quantity %>
+  </div>
+  <div>
+    <%= submit_tag "Create Inventory", class: 'button' %>
+  </div>
+<% end %>
+
+</div>
+
+
+<div class = 'form'>
+  <h1>Hours</h1>
+  <p class = 'form-text'>This is to modify business hours</p>
+	<%= form_with url: home_create_hours_path, method: :post do %>
+  <div class = 'td'>
+    <%= label_tag :mon_fri, "Monday - Friday" %>
+    <%= text_field_tag :mon_fri %>
+  </div>
+  <div class = 'td'>
+    <%= label_tag :sat, "Saturday" %>
+    <%= text_field_tag :sat %>
+  </div>
+  <div class = 'td'>
+    <%= label_tag :sun, "Sunday" %>
+    <%= text_field_tag :sun %>
+  </div>
+  <div>
+    <%= submit_tag "Save Hours", class: 'button' %>
+  </div>
+<% end %>
+
+</div>
+
+
+
+
+
+<div class = 'link-div'>
+<%= link_to 'View current information', home_view_path, class: 'link-button' %>
+</div>
+<%end%>
+
+</div>

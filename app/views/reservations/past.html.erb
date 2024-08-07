@@ -1,0 +1,86 @@
+<style>
+	table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 50vh;
+}
+
+</style>
+<% if user_signed_in? %>
+<div class = 'container'>
+
+<h1>Reservations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Birth Date</th>
+      <th>Paid</th>
+      <th>Waiver</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.first %></td>
+        <td><%= reservation.last %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.phone_number %></td>
+        <td><%= reservation.birth.strftime('%Y-%m-%d') if reservation.birth %></td>
+        <td><%= reservation.paid ? 'Yes' : 'No' %></td>
+        <td>
+          <% if reservation.waiver %>
+            <%= link_to 'Yes', view_waivers_path(temp_user_id: reservation.temp_user_id) %>
+          <% else %>
+            No
+          <% end %>
+        </td>
+        <td><%= reservation.start_date.strftime('%Y-%m-%d') if reservation.start_date %></td>
+        <td><%= reservation.end_date.strftime('%Y-%m-%d') if reservation.end_date %></td>
+        <td><%= reservation.start_time_hour%>:<%= sprintf('%02d', reservation.start_time_minute.to_i) %>
+ <%= reservation.start_time_period%></td>
+        <td><%= reservation.end_time_hour%>:<%= sprintf('%02d', reservation.end_time_minute.to_i) %>
+ <%= reservation.end_time_period%></td>
+        <td><%= reservation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= reservation.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% end %>

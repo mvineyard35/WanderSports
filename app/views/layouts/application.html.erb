@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    
+    <style>
+
+   
+html, body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+    
+
+    /* Ensure content is above the overlay */
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem; /* Adjust padding as needed */
+  z-index: 999;
+  width: 100%;
+  height: 9em;
+}
+
+.navbar-brand {
+  margin-right: auto;
+  padding-left: 2em;
+  margin-top: 2.75em;
+  z-index: 999;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 0rem; /* Adjust the spacing between links as needed */
+  z-index: 999;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding-top: 4em;
+  margin-right: 5em;
+  z-index: 999;
+  width: 100%;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: sans-serif;
+  color: #4A4A4A; /* Adjust color as needed */
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  .navbar-collapse {
+    justify-content: center;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0;
+    z-index: 999;
+  }
+
+}
+
+.footer {
+  background-color: #1E2033;
+  min-height: 25vh;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  z-index: 998;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 2rem; /* Padding to align content within footer */
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1%;
+}
+
+.logo-footer {
+  padding-bottom: 1rem; /* Space between logo and social */
+  margin-left: 40%;
+}
+
+.footer-text {
+  color: #F4F4F4;
+  font-size: 2vw;
+  margin-right: 1rem;
+  font-family: sans-serif;
+  font-weight: 100;
+  padding-top: 0;
+  margin-top: .5em;
+
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid #f4F4F4;
+  margin-left: 40%;
+  width: 100%;
+}
+
+.social a {
+  margin-left: 10px; /* Add some space between the images */
+}
+
+.footer-links {
+  display: flex;
+  position: absolute;
+  right: 15rem; /* Position 15rem from the right side of the footer */
+  text-align: center;
+  padding-top: 1em;
+}
+
+.footer-links .column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem; /* Space between columns */
+}
+
+.footer-links .column a {
+  color: #F4F4F4;
+  text-decoration: none;
+  margin-bottom: 0.5rem; /* Space between links */
+}
+
+.footer-links .column a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.text-with-line {
+    display: flex;
+    align-items: center;
+    margin-left: 5%; /* Adjust margin as needed */
+    padding-left: 1rem; /* Add padding to align text with the line */
+    position: relative; /* Ensure positioning for pseudo-element */
+    height: auto;
+  }
+
+  .vertical-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0.25rem; /* Adjust line thickness as needed */
+    background-color: #E55f25;
+    height: auto;
+  }
+
+  .text-content {
+    color: #F4F4F4;
+    font-family: sans-serif;
+    font-weight: 100;
+    width: 45%;
+    font-size: 1.5vw;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  .info-div {
+    padding-top: 10%;
+    padding-left: 5%;
+  }
+
+  .nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  
+}
+
+.dropdown-menu.show {
+  position: absolute;
+  top: 100%; /* Positions the dropdown directly below the link */
+  left: 0;
+  background-color: inherit;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2em;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding-bottom: 1em;
+  color: #f4F4F4;
+  display: block;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-align: left;
+  margin-left: 0;
+
+}
+
+.dropdown-menu .dropdown-item:hover {
+  color: #E55f25;
+}
+
+.nav-link.dropdown-toggle {
+  display: flex;
+  align-items: flex-end; /* Align items at the bottom */
+}
+
+.about-text {
+  margin-right: 5px; /* Adjust spacing between text and image */
+}
+
+.caret-image {
+  width: 12px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.caret-image {
+  width: 16px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 4px; /* Adjust spacing between text and image */
+}
+
+#about-link {
+  transition: transform 0.3s ease;
+  margin-bottom: .25em;
+
+}
+
+#about-link:hover {
+  transform: scale(1.025); /* Scale up by 20% on hover */
+}
+
+#hover-link {
+  transition: transform 0.3s ease, text-decoration 0.3s ease; /* Transition for transform and text-decoration */
+  padding-bottom: .25em;
+}
+
+#hover-link:hover {
+  transform: scale(1.025); /* Scale up by 10% on hover */
+}
+
+::placeholder {
+    font-family: sans-serif;
+    font-size: 12px;
+    padding-bottom: 0;
+  }
+
+  #hover-link::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* Start at the middle */
+    bottom: 0; /* Position at the bottom of the text */
+    width: 0; /* Initial width is 0 */
+    height: 2px; /* Height of the underline */
+    background-color: #4A4A4A; /* Color of the underline */
+
+    transition: all 0.3s ease-out; /* Smooth transition */
+}
+
+/* Hover state */
+#hover-link:hover::after {
+    left: 0; /* Start from the left */
+    width: 100%; /* Expand to full width */
+}
+
+.footer-a {
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-top: .5em;
+}
+
+.admin-link {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 2vw;
+  color: #F4F4F4;
+  text-decoration: none;
+  margin-left: 0;
+  padding-left: 0;
+  cursor: default;
+  position: relative;
+}
+
+.admin-link-to {
+  color: #F4F4F4;
+}
+
+.s-icon {
+  width: 2vw;
+  height: auto;
+  margin-right: .5em;
+}
+
+.flash-messages {
+  position: fixed;
+  top: 10px;
+  right: 50%;
+  width: 20%;
+  z-index: 1000;
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.alert-alert {
+  background-color: #f44336; /* Red */
+}
+
+.alert-notice {
+  background-color: #2196f3; /* Blue */
+}
+
+.alert-success {
+  background-color: #4caf50; /* Green */
+}
+
+.alert-error {
+  background-color: #f44336; /* Red */
+}
+
+.alert-warning {
+  background-color: #ff9800; /* Orange */
+}
+
+.cart-link {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  z-index: 999;
+}
+
+.cart-icon {
+  font-size: 1.5em; /* Adjust size as needed */
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.cart-badge {
+  position: absolute;
+  top: -10px; /* Position the badge above the icon */
+  right: -10px; /* Position the badge to the right of the icon */
+  background-color: red; /* Badge background color */
+  color: white; /* Badge text color */
+  border-radius: 50%;
+  padding: 2px 6px; /* Padding inside the badge */
+  font-size: 0.75em; /* Font size for the badge */
+  line-height: 1; /* Line height for the badge */
+}
+
+.cart-text {
+  vertical-align: middle; /* Align the cart text vertically with the icon */
+}
+
+.cart-icon {
+  height: .75em;
+}
+
+.cart-icon:hover {
+  transform: scale(1.025);
+}
+
+
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <title>Wander Sports</title>
+  </head>
+  <body>
+
+
+<%= link_to checkouts_new_path, class: 'cart-link' do %>
+  <span class="cart-icon"><%= image_tag 'cart.svg', class: 'cart-icon'%></span>
+  <% if cart_item_count.positive? %>
+    <span class="cart-badge"><%= cart_item_count %></span>
+  <% end %>
+<% end %>
+
+
+    <div class = "content">
+
+    <nav class="navbar">
+  <%= link_to home_index_path, class: 'navbar-brand' do %>
+  <%= image_tag "logo.svg" %>
+  <% end %>
+
+  <div id="navbarNavAltMarkup" class="navbar-collapse">
+    <div class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+      <%= link_to 'Admin', home_view_path, class: 'nav-item nav-link', id: 'hover-link' %>
+      <%= link_to 'Reservations', reservations_view_path, class: 'nav-item nav-link', id: 'hover-link' %>
+    <% end %>
+      <%= link_to 'About', home_about_path, class: "nav-item nav-link", id: "hover-link" %>
+      <%= link_to 'Book Online', products_index_path, class: "nav-item nav-link", id: "hover-link", style: 'white-space: nowrap;' %>
+      <%= link_to 'Policies', home_policies_path, class: "nav-item nav-link", id: "hover-link" %>
+      <%= link_to 'Gallery', home_gallery_path, class: "nav-item nav-link", id: 'hover-link'%>
+      <%= link_to 'Contact Us', home_contact_path, class: "nav-item nav-link", id: "hover-link", style: 'margin-right: 12em; white-space: nowrap;' %>
+      <% if user_signed_in? %>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, style: 'white-space: nowrap; right: 10%; position: absolute; z-index: 1002' %>
+<% end %>
+
+    </div>
+  </div>
+</nav>
+
+<div class="flash-messages">
+    <% flash.each do |type, message| %>
+      <div class="alert alert-<%= type %>">
+        <span><%= message %></span>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div style = 'width: 102%;'>
+    <%= yield %>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Close flash messages after 3 seconds
+      setTimeout(function() {
+        document.querySelectorAll('.flash-messages .alert').forEach(function(alert) {
+          alert.style.transition = 'opacity 0.5s ease-out';
+          alert.style.opacity = '0';
+          setTimeout(() => alert.remove(), 500); // Remove from DOM after fade-out
+        });
+      }, 3000);
+
+      // Close button functionality
+      document.querySelectorAll('.close-flash').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const alert = button.parentElement;
+          alert.style.transition = 'opacity 0.5s ease-out';
+          alert.style.opacity = '0';
+          setTimeout(() => alert.remove(), 500);
+        });
+      });
+    });
+  </script>
+  
+
+<div class="footer">
+  <div class="left-side">
+    <div class="logo-footer"><%= image_tag 'logo-light.svg' %></div>
+    <div class="social">
+      <p class="footer-text">Connect<%= link_to 'w', new_user_session_path, class: 'admin-link'%>ith us</p>
+      <a href="https://www.facebook.com/wandersportsnc/?_rdr" target= '_blank'><%= image_tag('facebook.svg', class: 's-icon')%></a>
+      <a href="https://www.instagram.com/wandersportsnc/" target= '_blank' ><%= image_tag('instagram.svg', class: 's-icon')%></a>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="column">
+      <a href="#" class = 'footer-a'><h3 style = 'padding-bottom: 0; margin-bottom: 0;'>Company</h3></a>
+      <%= link_to 'About Us', home_about_path, class: 'footer-a' %>
+      <%= link_to 'Policies', home_policies_path, class: 'footer-a'%>
+    </div>
+    <div class="column">
+      <a href="#" class = 'footer-a'><h3 style = 'padding-bottom: 0; margin-bottom: 0;'>Support</h3></a>
+      <%= link_to 'Book Online', reservations_reserve_path, class: 'footer-a'%>
+      <%= link_to 'Contact Us', home_contact_path, class: 'footer-a' %>
+    </div>
+  </div>
+</div>
+
+</div>
+  <script>
+        document.getElementById('about-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var dropdownMenu = document.querySelector('.dropdown-menu');
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+                // Ensure display is set to none after transition
+                setTimeout(function() {
+                    dropdownMenu.style.display = 'none';
+                }, ); // Match the transition duration
+            } else {
+                dropdownMenu.style.display = 'block';
+                setTimeout(function() {
+                    dropdownMenu.classList.add('show');
+                }, ); // Slight delay to allow display change to take effect
+            }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<% if user_signed_in? %>
+<style>
+  .button-div {
+    margin-top: 3%;
+    padding-bottom: 5%;
+  }
+
+  .button {
+    text-decoration: none;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: darkblue;
+    border-radius: 4px;
+    color: whitesmoke;
+  }
+
+  table {
+    width: 80%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* app/assets/stylesheets/application.css */
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.5; /* Adjust as needed */
+  max-height: 3em;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+
+<div class = 'container'>
+
+  <div class="button-div">
+  <%= link_to 'Add to Database', home_admin_path, class: 'button' %>
+</div>
+
+<h2>Specials</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Info</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @specials.each do |special| %>
+      <tr>
+        <td><%= special.info %></td>
+        <td class="actions">
+          <%= button_to 'Delete', delete_special_path(special), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', home_edit_path(type: 'Special', id: special.id), class: 'button' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Inventories</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Equipment</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%= inventory.equipment %></td>
+        <td><%= inventory.quantity %></td>
+        <td class="actions">
+          <%= button_to 'Delete', delete_inventory_path(inventory), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', home_edit_path(type: 'Inventory', id: inventory.id), class: 'button' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+<h2>Hours</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Monday - Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hours.each do |hour| %>
+      <tr>
+        <td><%= hour.mon_fri %></td>
+        <td><%= hour.sat %></td>
+        <td><%= hour.sun %></td>
+        <td class="actions">
+          <%= button_to 'Delete', delete_hour_path(hour), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', home_edit_path(type: 'Hour', id: hour.id), class: 'button' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class='form'>
+  <h1>Images</h1>
+  <p class='form-text'>Manage your images</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @images.each do |image| %>
+        <tr>
+          <td class = 'truncate'><%= image.image %></td>
+          <td>
+            <%= button_to 'Delete', delete_image_path(image), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', home_edit_path(type: 'image', id: image.id), class: 'button' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="button-div">
+  <%= link_to 'Add to Database', home_admin_path, class: 'button' %>
+</div>
+<% end %>
+
+</div>

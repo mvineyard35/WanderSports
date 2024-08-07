@@ -1,0 +1,253 @@
+<style>
+
+	#background-image {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100%;/* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fit; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+  
+#image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 200% ;
+  background-color: rgba(226, 242, 255, 0.4); /* Overlay color */
+  z-index: -999;
+}
+
+.container {
+  min-height: 50vh;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10%;
+}
+
+.entry {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1vw;
+  flex: 1;      
+  display: flex;
+  flex-direction: column; 
+  width: 20em;
+}
+
+h1 {
+  font-family: 'Outfit';
+  font-weight: 300;
+  font-size: 2vw;
+  color: #4A4A4A;
+}
+
+.input {
+  width: 23em;
+  margin-top: 1%;
+  line-height: 2;
+}
+
+.label {
+  width: 20em;
+  display: block;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #EF8355;
+  padding: 1%;
+  border: none;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1vw;
+  position: relative;
+  margin-left: 0;
+  width: 15em;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-top: 2%;
+}
+
+.btn-primary:hover {
+  background-color: #E55F25;
+  cursor: pointer;
+}
+
+.line {
+  display: flex;
+  gap: 0; /* Adjust gap between entries as needed */
+  align-items: center;
+  width: 1%;
+  padding-bottom: 2%;
+}
+
+.hour, .minute, .period {
+  width: 7em;
+}
+
+form {
+  width: 50%;
+  background-color: rgba(90, 161, 255, .34);
+  padding: 3%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+}
+
+.time-select-hour, .time-select-minute, .time-select-period {
+  
+}
+
+.end-label {
+
+}
+
+.entry2 {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1vw;
+  flex: 1;      
+  display: flex;
+  flex-direction: column; 
+  vertical-align: bottom;
+}
+
+.line2 {
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom */
+  justify-content: space-between; /* Create space between start and end sections */
+  width: 95%; /* Full width */
+  padding-bottom: 2%;
+  gap: 20px; /* Adjust gap between start and end time sections */
+}
+
+.start-time,
+.end-time {
+  display: flex;
+  align-items: flex-end; /* Align to the bottom */
+  gap: 10px; /* Space between the individual select inputs */
+}
+
+.entry2 {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-label,
+.end-label {
+  margin-bottom: 0.5em; /* Add margin below the labels for spacing */
+}
+
+</style>
+
+<%= image_tag 'book-bg.png', id: 'background-image' %>
+<div id='image-overlay'></div>
+
+<div class = 'container'>
+
+<h1>Make a Reservation</h1>
+
+
+<%= form_with model: @reservation, url: reservations_path, local: true do |form| %>
+<div class = 'line'>
+  <div class = 'entry'>
+    <%= form.label :first, "First Name", class: "label" %>
+    <%= form.text_field :first, required: true, class: 'input' %>
+  </div>
+
+  <div class = 'entry'>
+    <%= form.label :last, "Last Name", class: "label" %>
+    <%= form.text_field :last, required: true, class: 'input' %>
+  </div>
+
+</div>
+
+<div class = 'line'>
+  <div class = 'entry'>
+    <%= form.label :email, "Email", class: "label" %>
+    <%= form.email_field :email, required: true, class: 'input' %>
+  </div>
+
+  <div class = 'entry'>
+    <%= form.label :phone_number, "Phone Number", class: "label" %>
+    <%= form.text_field :phone_number, required: true, class: 'input', placeholder: '111-111-1111' %>
+  </div>
+  </div>
+
+<div class = 'line'>
+  <div class = 'entry'>
+    <%= form.label :birth, "Date of Birth", class: "label" %>
+    <%= form.date_field :birth, required: true, class: 'input' %>
+  </div>
+</div>
+
+<div class = 'line'>
+  <div class = 'entry'>
+    <%= form.label :start_date, "Start Date", class: "label" %>
+    <%= form.date_field :start_date, required: true, class: 'input' %>
+  </div>
+
+  <div class = 'entry'>
+    <%= form.label :end_date, "End Date", class: "label" %>
+    <%= form.date_field :end_date, required: true, class: 'input' %>
+  </div>
+</div>
+ <div class="line line2">
+  <div class="start-time">
+    <div class="entry2">
+      <%= form.label :start_time_hour, "Start Time", class: 'time-label' %>
+      <%= form.select :start_time_hour, options_for_select((1..12).to_a, selected: 1), {}, class: 'time-select hour' %>
+    </div>
+    <div class="entry2">
+      <%= form.select :start_time_minute, options_for_select(['00', '15', '30', '45'], selected: '00'), {}, class: 'time-select minute' %>
+    </div>
+    <div class="entry2">
+      <%= form.select :start_time_period, options_for_select(['AM', 'PM'], selected: 'AM'), {}, class: 'time-select period' %>
+    </div>
+  </div>
+
+  <div class="end-time">
+    <div class="entry2">
+      <%= form.label :end_time_hour, "End Time", class: 'end-label' %>
+      <%= form.select :end_time_hour, options_for_select((1..12).to_a, selected: 1), {}, class: 'time-select hour' %>
+    </div>
+    <div class="entry2">
+      <%= form.select :end_time_minute, options_for_select(['00', '15', '30', '45'], selected: '00'), {}, class: 'time-select minute' %>
+    </div>
+    <div class="entry2">
+      <%= form.select :end_time_period, options_for_select(['AM', 'PM'], selected: 'AM'), {}, class: 'time-select period' %>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <%= form.hidden_field :temp_user_id %>
+
+  <div class = 'entry'>
+    <%= form.submit "Submit Reservation", class: "btn-primary" %>
+  </div>
+<% end %>
+
+
+<% if @move_to_waiver == 1 %>
+<%= link_to 'Add Waiver', waivers_new_path, class: 'waiver-link btn-primary' %>
+<% end %>
+
+</div>
+
+
+

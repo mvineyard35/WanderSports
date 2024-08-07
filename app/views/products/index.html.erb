@@ -1,0 +1,460 @@
+<style>
+
+  #background-image {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100%;/* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fit; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+  
+#image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 200% ;
+  background-color: rgba(226, 242, 255, 0.4); /* Overlay color */
+  z-index: -999;
+}
+  .content {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.header {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #4A4A4A;
+  font-size: 5vw;
+  margin-top: 7%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+}
+
+.header2 {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #4A4A4A;
+  font-size: 3vw;
+  margin-bottom: 5%;
+  margin-left: 10%;
+}
+
+.checkmark {
+  margin-right: 1%;
+  vertical-align: center;
+}
+
+.text {
+  font-family: sans-serif;
+  font-weight: 100;
+  color: #4A4A4A;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2vw;
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.text2 {
+  font-family: sans-serif;
+  font-weight: 100;
+  color: #4A4A4A;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2vw;
+  margin-left: 10%;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+}
+.veteran {
+  margin-right: 3%;
+}
+
+.main {
+  color: #E55F25;
+}
+
+
+
+.flex-container {
+  display: flex;              /* Enable flexbox */
+  justify-content: space-between; /* Space items evenly */
+  width: 80%;               /* Full width of the container */
+  margin-left: 10%;
+}
+
+.flex-item {
+  flex: 1;                   /* Make each item flexible */
+  margin: 1%;             /* Optional: add some spacing around items */
+  text-align: center;       /* Center text inside items */
+}
+
+.inner-item {
+  display: flex;               /* Enable flexbox for inner items */
+  justify-content: center;     /* Center text horizontally */
+  align-items: center;         /* Center text vertically */            
+  height: 10vh;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  font-weight: 100;            
+}
+
+.top {
+  background-color: #FF9669;
+}
+
+.bottom {
+  background-color: #E2F2FF;
+}
+
+.flex-container2 {
+  display: flex;                 /* Enable flexbox for the outer container */
+  justify-content: space-between; /* Space items evenly */
+  width: 80%;                  /* Full width of the container */
+  margin-left: 10%;
+}
+
+.flex-item2 {
+  flex: 1;                      /* Make each item flexible */
+  margin: 1%;
+  text-align: left;          /* Center text inside items */
+}
+
+.inner-container {
+  display: flex;               /* Enable flexbox for the inner container */
+  margin: 0;
+  padding: 0;
+}
+
+.inner-item2 {
+ 
+  display: flex;               /* Enable flexbox for inner items */
+  justify-content: center;     /* Center text horizontally */
+  align-items: center;         /* Center text vertically */            
+  height: 20vh;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  font-weight: 100; 
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.text-left {
+  background-color: #FFE9A2;
+  text-align: center;
+}
+
+.text-right {
+  background-color: #E2F2FF;
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 10vw;
+}
+
+.flex-container3 {
+  display: flex;                 /* Enable flexbox for the outer container */
+  justify-content: space-between; /* Space items evenly */
+  width: 80%;                  /* Full width of the container */
+  margin-left: 10%;
+}
+
+.flex-item3 {
+  flex: 1;                      /* Make each item flexible */
+  margin: 1%;
+  text-align: left;          /* Center text inside items */
+}
+
+.inner-container3 {
+  display: flex;               /* Enable flexbox for the inner container */
+  margin: 0;
+  padding: 0;
+}
+
+.inner-item3 {
+ 
+  display: flex;               /* Enable flexbox for inner items */
+  justify-content: center;     /* Center text horizontally */
+  align-items: center;         /* Center text vertically */            
+  height: 20vh;
+  font-size: 1.5vw;
+  font-family: sans-serif;
+  font-weight: 100; 
+  width: 50%;
+
+}
+
+.text-left3 {
+  background-color: #78DEEB;
+  text-align: center;
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
+.text-right3 {
+  background-color: #E2F2FF;
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 10%;
+}
+
+.info-container5 {
+  position: relative;
+  width: 100vw;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.info5 {
+  padding-top: 0;
+  margin-left: 10%;
+  display: flex;
+  align-items: top;
+
+}
+
+.info52 {
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+
+}
+
+.text5 {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1.5vw;
+  color: 4A4A4A;
+  padding-left: 1%;
+}
+
+.stripe {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.products {
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if they overflow */
+  justify-content: space-between; /* Distribute space evenly between items */
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 30%;
+  margin-bottom: 10%;
+}
+
+.product {
+  flex: 1 0 20%; /* Grow to fit, don't shrink, start with 20% width */
+  background-color: rgba(90, 161, 255, .34);
+  margin: 2%;
+  min-height: 25em;
+  text-align: center;
+  display: flex; /* Align content within the .product */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: 100;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  padding-top: 2%;
+  padding-bottom: 2%;
+  }
+
+  .product:hover {
+    background-color: rgba(90, 161, 255, .4);
+  }
+
+  .dark {
+    background-color: rgba(74, 141, 145, .45);
+  }
+
+  .dark:hover {
+    background-color: rgba(74, 141, 145, .5);
+  }
+
+.add-button {
+  width:  100%;
+  height: 2em;
+  color: white;
+  background-color: #EF8355;
+  margin-top: 2%;
+  border: none;
+}
+
+.add-button:hover {
+  background-color: #E55F25;
+  cursor: pointer;
+}
+
+.product-image {
+  width: 70%;
+}
+
+.quantity-button {
+  background-color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin: 0;
+}
+
+.buttons {
+  background-color: white;
+}
+
+.quantity {
+  border: none;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+.quantity-button:hover {
+  background-color: #e0e0e0;
+}
+
+.quantity-button:active {
+  background-color: #d0d0d0;
+}
+
+/* Hide the spin buttons for WebKit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the spin buttons for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+</style>
+
+<%= image_tag 'book-bg.png', id: 'background-image' %>
+<div id='image-overlay'></div>
+
+
+<div class="content">
+
+<p class = 'header'>Rentals</p>
+  
+   
+
+
+<p class = 'text2'><%= image_tag 'veteran.svg', class: 'veteran'%><span class = 'main'>Veterans Discount:</span> 10% off with valid proof of service (pay in person)</p>
+
+
+<div class = 'info-container5'>
+<div class = 'info5'>
+      <svg width="14" min-height="14" viewBox="0 0 20 20">
+          <polygon points="0,20 10,0 20,20" fill="#E55F25" transform='rotate(90 10 10)' stroke="#E55F25" stroke-width="2" stroke-linejoin="round"/> <!-- Adjust points and fill color as needed -->
+      </svg>
+      <p class = 'text5'>All rentals require a valid ID and signed rental agreement</p>
+    </div>
+
+    <div class = 'info52'>
+      <svg width="14" min-height="14" viewBox="0 0 20 20">
+          <polygon points="0,20 10,0 20,20" fill="#E55F25" transform='rotate(90 10 10)' stroke="#E55F25" stroke-width="2" stroke-linejoin="round"/> <!-- Adjust points and fill color as needed -->
+      </svg>
+      <p class = 'text5'>Rentals subjet to availability</p>
+    </div>
+
+    <div class = 'info52'>
+      <svg width="14" min-height="14" viewBox="0 0 20 20">
+          <polygon points="0,20 10,0 20,20" fill="#E55F25" transform='rotate(90 10 10)' stroke="#E55F25" stroke-width="2" stroke-linejoin="round"/> <!-- Adjust points and fill color as needed -->
+      </svg>
+      <p class = 'text5'>Rentals returned late will be charged a late fee as stated in the rental<br> agreement.  An authorization hold of $100/Paddle Board is required<br> prior to pick up.</p>
+    </div>
+</div>
+
+<p class = 'header2'>Included with each rental:</p>
+<p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Inflatable Stand Up Paddle Board</p>
+<p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Collapsible and Adjustable Paddle</p>
+<p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Life Jacket</p>
+  <p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Electric Pump (Plugs into your car's outlet)</p>
+  <p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Heavy Duty Backpack</p>
+  <p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Waterproof Dry Bag</p>
+  <p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Detachable Fin</p>
+  <p class = 'text'><%= image_tag 'checkmark.svg', class: 'checkmark'%>Emergency Whistle</p>
+
+
+<p class="header2">Inflatable Standup Paddle Board</p>
+
+
+<div class="products" id='products'>
+  <% @products.each do |product| %>
+  <% if product.metadata['color'].present? %>
+    <div class = 'product dark'>
+      <% else %>
+    <div class="product">
+      <% end %>
+      <img src="<%= product.images.first %>" alt="Image" class='product-image'>
+      <p style = 'font-size: 1.5vw; font-weight: 300;'><%= product.name %></p>
+      <p style = 'font-size: 1vw;'><%= product.description %></p>
+      <% if product.metadata['price'].present? %>
+        <p style = 'font-size: 2vw;'><%= number_to_currency(product.metadata['price'].to_i / 100.0, unit: '$') %></p>
+      <% else %>
+        <p>Price not available</p>
+      <% end %>
+      
+
+      <%= form_with url: add_to_cart_product_path(product.id), method: :post do %>
+  <div style="text-align: left; width: 100%; display: flex; align-items: center; margin-bottom: 10px;">
+    <%= label_tag :quantity, "Quantity", style: "margin-right: 10px;" %>
+    <div class="buttons">
+      <button type="button" class="decrease quantity-button">-</button>
+      <input type="number" name="quantity" class="quantity" value="1" min="1" style="text-align: center; width: 40px; margin: 0 5px;" />
+      <button type="button" class="increase quantity-button">+</button>
+    </div>
+  </div>
+
+
+
+
+        <%= submit_tag 'Add to Cart', class: 'add-button' %>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+<script>
+          document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.decrease').forEach(button => {
+    button.addEventListener('click', function() {
+      const quantityInput = this.nextElementSibling;
+      let currentValue = parseInt(quantityInput.value) || 0;
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+  });
+
+  document.querySelectorAll('.increase').forEach(button => {
+    button.addEventListener('click', function() {
+      const quantityInput = this.previousElementSibling;
+      let currentValue = parseInt(quantityInput.value) || 0;
+      quantityInput.value = currentValue + 1;
+    });
+  });
+});
+
+
+
+        </script>
+</div>
+

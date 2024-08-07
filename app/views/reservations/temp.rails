@@ -1,0 +1,14 @@
+<!-- Stripe Checkout Button -->
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"
+    data-description="Total amount: <%= number_to_currency(@cart_items.sum { |item| item.price * item.quantity }, unit: 'USD') %>"
+    data-amount="<%= @cart_items.sum { |item| item.price * item.quantity * 100 } %>"
+    data-locale="auto"
+    data-allow-remember-me="false"
+    data-currency="usd"
+    data-email="email"
+    data-name="Wander Sports LLC"
+    data-panel-label="Pay <%= number_to_currency(@cart_items.sum { |item| item.price * item.quantity }, unit: 'USD') %>"
+    data-label="Pay Now">
+  </script>

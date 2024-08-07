@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Gallery</title>
+  <style>
+
+  	#background-image {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100%;/* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fit; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+  
+	#image-overlay {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100% ;
+	  min-height: 200% ;
+	  background-color: rgba(226, 242, 255, 0.1); /* Overlay color */
+	  z-index: -999;
+	}
+    .container {
+      display: block;
+      width: 90%;
+      margin: 0 auto; /* Centers the container */
+      text-align: center; /* Optional: centers the content inside the container */
+    }
+
+    .post {
+      display: inline-block;
+      padding: 2%;
+      margin: 2%;
+      width: 25%;
+      box-sizing: border-box;
+    }
+
+    .post img {
+      width: 100%; /* Ensures the image takes the full width of the post */
+      height: 200px; /* Fixed height for all images */
+      object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+  </style>
+</head>
+<body>
+
+	<%= image_tag 'book-bg.png', id: 'background-image' %>
+
+  <div class='container'>
+    <% @images.each do |image| %>
+      <div class='post'>
+        <%= raw(image.image) %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

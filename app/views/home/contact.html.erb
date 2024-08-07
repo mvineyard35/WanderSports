@@ -1,0 +1,133 @@
+<style>
+
+#photo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 100% ;
+  background-color: rgba(255, 253, 242, 1); /* Overlay color */
+  z-index: -999;
+}
+.header {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #4A4A4A;
+  font-size: 3vw;
+  margin-bottom: 2%;
+  margin-left: 10%;
+}
+
+.container {
+  position: relative;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+}
+
+.image-svg {
+	width: 100%;
+  margin-top: 1%;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.methods {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: 100;
+  min-width: 20%;
+}
+
+.phone-number {
+  text-decoration: none;
+  color: #4A4A4A;
+  text-size: 1vw;
+  margin-left: 1%;
+}
+
+.locations {
+  display: flex;
+  align-items: flex-start;
+}
+
+.map-links {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
+.icon {
+  height: 1.5em;
+  width: auto;
+  margin-right: 1%;
+}
+
+.map {
+  text-decoration: none;
+  color: #4A4A4A;
+  text-size: 1vw;
+  margin-left: 1%;
+  width: 10em;
+}
+
+.call-icon {
+  height: 2em;
+}
+
+.svg-image {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  height:auto;
+}
+
+.text:hover, .map:hover {
+  transform: scale(1.025);
+}
+
+</style>
+<div class = 'container'>
+<p class = 'header'>Contact Us</p>
+
+
+
+<div class='methods'>
+  <p class='text'>
+    <%= image_tag 'call.svg', class: 'call-icon' %>
+    <a href="tel:9802023004" class="phone-number">(980) 202 3004</a>
+  </p>
+
+  <p class='text'>
+    <%= image_tag 'emailus.svg', class: 'call-icon' %>
+    <a href="mailto:wandersportsnc@gmail.com?subject=Subject%20of%20the%20email&body=Body%20of%20the%20email" class='phone-number'>wandersportsnc@gmail.com</a>
+  </p>
+
+  <div class='locations'>
+    <p class='text'>
+      <%= image_tag 'address.svg', class: 'call-icon' %>
+      <a href="https://www.google.com/maps/search/?api=1&query=1400+Richmond+Pl,Charlotte,NC,28209" class='phone-number'>1400 Richmond Pl<br>Charlotte, NC 28209</a>
+    </p>
+  </div>
+</div>
+
+<div class='map-links'>
+      <a href="http://maps.apple.com/?address=1400+Richmond+Pl,Charlotte,NC,28209" class='map'><%= image_tag 'apple.svg', class: 'icon' %> Apple Map</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=1400+Richmond+Pl,Charlotte,NC,28209" class='map'><%= image_tag 'google.svg', class: 'icon' %> Google Map</a>
+    </div>
+
+
+<div class = 'svg-image'>
+	<%= image_tag '196.svg', class: 'image-svg' %>
+</div>
+
+</div>
+
+

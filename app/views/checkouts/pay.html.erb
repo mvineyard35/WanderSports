@@ -1,0 +1,308 @@
+
+<style>
+
+   #background-image {
+    position: fixed;
+    top: 0;
+    left: 50% ;
+    transform: translateX(-50% );
+    width: 100vw;
+    height: 100%;/* Ensure the min-height is 115% to cut off the bottom 15% */
+    object-fit: fit; /* Ensure the video covers the entire element */
+    object-position: top; /* Align the video to the top */
+    z-index: -1000;
+  }
+
+  .container-left h1 {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 4vw;
+  }
+
+  .container-right h1 {
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 3vw;
+    color: #4A4A4A;
+    margin-left: 10%;
+  }
+  
+#image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% ;
+  min-height: 200% ;
+  background-color: rgba(226, 242, 255, 0.4); /* Overlay color */
+  z-index: -999;
+}
+  .container {
+    width: 90%;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+    display: flex;
+    margin-top: 5%;
+    position: relative;
+  }
+
+  .container-left, .container-right {
+    flex: 1;
+  }
+
+  .item {
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 2%;
+    display: block;
+    position: relative;
+  }
+
+  .quantity-button {
+  background-color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin: 0;
+}
+
+.buttons {
+  background-color: white;
+}
+
+.quantity {
+  border: none;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+.quantity-button:hover {
+  background-color: #e0e0e0;
+}
+
+.quantity-button:active {
+  background-color: #d0d0d0;
+}
+
+/* Hide the spin buttons for WebKit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the spin buttons for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.item-header {
+  display: block;
+}
+
+.item-header p {
+  display: inline-block;
+}
+
+.container-left-item {
+  display: inline-block;
+  margin-right: 5%;
+  padding: 0;
+  vertical-align: top;
+}
+
+
+
+.container-button {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  border: none;
+  color: white;
+  background-color: #5A80FF;
+}
+
+.container-right {
+  background-color: rgba(111, 142, 188, .25);
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+}
+
+.container-left-button, .container-right-button  {
+  flex: 1;
+  padding: 1%;
+  }
+
+.list {
+  margin-left: 10%;
+  padding-bottom: 5%;
+}
+
+   ul.custom-bullets {
+      list-style-type: none; /* Remove default bullets */
+      padding-left: 0px; /* Add left padding for custom bullets */
+    }
+
+    ul.custom-bullets li {
+      position: relative;
+      margin-bottom: 10px; /* Space between list items */
+      padding-left: 30px; /* Space for the bullet */
+    }
+
+    ul.custom-bullets li::before {
+      content: '•'; /* Custom bullet symbol */
+      color: #5A80FF; /* Custom bullet color */
+      font-size: 1.5em; /* Custom bullet size */
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 1.2; /* Align bullets vertically */
+    }
+
+    .container-right li {
+      font-family: sans-serif;
+      font-weight: 100;
+      font-size: 1vw;
+    }
+
+    .checkout-button {
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: 100;
+      color: white;
+      background-color: #5A80FF;
+      margin-left: 10%;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+    }
+
+    .stripe-ck {
+      margin-left: 5%;
+    }
+
+</style>
+
+<%= image_tag 'book-bg.png', id: 'background-image' %>
+<div id='image-overlay'></div>
+
+<div class = 'container'>
+
+
+<div class = 'container-left'>
+  <h1>Cart</h1>
+
+  <div class = 'item-header'>
+    <p style = 'margin-left: 30%;'>Rental Item</p>
+    <p style = 'margin-left: 25%;'>Item Total</p>
+  </div>
+    <% @subtotal = 0 %>
+    <% @cart_items.each do |item| %>
+    <div class = 'item'>
+
+      <div class = 'container-left-item'>
+        <% stripe_product = Stripe::Product.retrieve(item.product_id) %>
+        <%= image_tag stripe_product.images.first, alt: item.product_name, style: 'height: 10em; width: auto;' %>
+      </div>
+      <div class = 'container-left-item'>
+        <span style = 'font-family: sans-serif; font-weight: 400;'><%= item.product_name %></span><br>
+        <span style = 'font-family: sans-serif; font-weight: 100;'><%= item.product_description %></span><br><br>
+
+        <%= button_to 'Nothing', delete_item_checkouts_path(item), method: :delete, data: { confirm: 'Are you sure'}, remote: true, style: 'display:none' %>
+
+        <%= form_with model: item, url: update_items_checkouts_path(item), method: :patch, local: false, data: { remote: true } do |f| %>
+  <div style="text-align: left; width: 100%; display: flex; align-items: center; margin-bottom: 10px;">
+    <%= label_tag :quantity, "Quantity", style: "margin-right: 10px;" %>
+    <div class="buttons">
+      <button type="button" class="decrease quantity-button">-</button>
+      <input type="number" name="cart_item[quantity]" class="quantity" value="<%= item.quantity %>" min="1" style="text-align: center; width: 40px; margin: 0 5px;" />
+      <button type="button" class="increase quantity-button">+</button>
+    </div>
+  </div>
+          <%= f.hidden_field :cart_id, value: item.cart_id %>
+          <div class = 'button-container'>
+          <div class = 'container-left-button'>
+              <%= f.submit 'Update', class: 'container-button' %>
+            <% end %>
+          </div>
+            <div class = 'container-right-button'>
+            <%= button_to 'Delete', delete_item_checkouts_path(item), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'container-button' %>
+            <% @subtotal += item.quantity * item.price %>
+          </div>
+          </div>
+        </div>
+        <div class = 'container-left-item' style = 'margin-left: 5%;'>
+      <%= number_to_currency(item.price, unit: '$') %>
+    </div> 
+    </div><% end %>
+    
+  </div>
+   
+
+
+<div class = 'container-right'>
+
+    <h1>Order Summary</h1>
+    <div style = 'display: block;'>
+      <p style="display: inline-block; margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 2vw; color: #4A4A4A">Order Total</p> <span id="subtotal" style="display: inline-block; margin-left: 30%; font-family: sans-serif; font-weight: 100; font-size: 2vw; color: #4A4A4A"><%= number_to_currency(@subtotal, unit: '$') %></span>
+    </div>
+
+  <div class = 'list'>
+    <ul class="custom-bullets">
+      <li>Reserve now, then pay online or pay in person</li>
+      <li>If you would like to use the 10% veteran discount,<br>you can stop once you fill out the reservation form/waiver and pay in person.</li>
+      <li style = 'color: red;'>Your reservation is not confirmed until you pay either online or in person.</li>
+    </ul>
+  </div>
+  
+    <div class = 'stripe-ck'>
+    <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"
+    data-description="Total amount: <%= number_to_currency(@cart_items.sum { |item| item.price * item.quantity }, unit: '$') %>"
+    data-amount="<%= @cart_items.sum { |item| item.price * item.quantity * 100 } %>"
+    data-locale="auto"
+    data-allow-remember-me="false"
+    data-currency="usd"
+    data-email="email"
+    data-name="Wander Sports LLC"
+    
+    data-label="Pay Now">
+  </script>
+  </div>
+  
+</div>
+ <script>
+           document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.decrease').forEach(button => {
+    button.addEventListener('click', function() {
+      const quantityInput = this.nextElementSibling;
+      let currentValue = parseInt(quantityInput.value) || 1;
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+  });
+
+  document.querySelectorAll('.increase').forEach(button => {
+    button.addEventListener('click', function() {
+      const quantityInput = this.previousElementSibling;
+      let currentValue = parseInt(quantityInput.value) || 1;
+      quantityInput.value = currentValue + 1;
+    });
+  });
+});
+
+
+        </script>
+</div>

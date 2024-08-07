@@ -1,0 +1,12 @@
+// app/views/checkouts/update_items.js.erb
+
+// Update the subtotal and quantity for the updated cart item
+var cartItemElement = document.getElementById('cart_item_<%= @cart_item.id %>');
+var subtotalElement = document.getElementById('subtotal');
+
+<% new_subtotal = @cart_items.sum { |item| item.quantity * item.price } %>
+
+if (cartItemElement && subtotalElement) {
+  cartItemElement.querySelector('input[type="number"]').value = <%= @cart_item.quantity %>;
+  subtotalElement.innerHTML = "<%= number_to_currency(new_subtotal, unit: 'USD') %>";
+}

@@ -1,0 +1,149 @@
+<style>
+  .container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+h1, p, li, ol {
+  font-family: sans-serif;
+  font-weight: 100;
+}
+</style>
+
+<div class='container'>
+  <% if @waivers.any? %>
+    <% @waivers.each do |waiver| %>
+      <h1>Rental Agreement and Liability Waiver for Wander Sports LLC (Paddle Board Rental)</h1>
+      <p>This Rental Agreement and Liability Waiver (hereinafter referred to as the “Agreement”) is
+        entered into between the undersigned renter (hereinafter referred to as the “Renter”) and Wander
+        Sports LLC (hereinafter referred to as the “Company”). The Renter acknowledges and agrees to
+        the terms and conditions set forth below:</p>
+      <ol>
+        <% @reservations.each do |reservation| %>
+          <li>Rental Period
+            <ol type='a'>
+              <li>The rental period shall begin on <%= reservation.start_date %> at <%= reservation.start_time_hour %>:<%= sprintf('%02d', reservation.start_time_minute.to_i) %> <%= reservation.start_time_period %>.
+              </li>
+              <li>The rental period shall end on <%= reservation.end_date %> at <%= reservation.end_time_hour %>:<%= sprintf('%02d', reservation.end_time_minute.to_i) %> <%= reservation.end_time_period %></li>
+              <li>Any extensions to the rental period must be agreed upon in writing by both parties.</li>
+            </ol>
+          </li>
+        <% end %>
+
+        <li>Rental Fee
+          <ol type='a'>
+            <li>The Renter agrees to pay the rental fee in full prior to the commencement of the rental
+              period.</li>
+            <li>The Renter agrees to pay a refundable deposit of $100 per paddle board to cover the cost
+              of any damage to the equipment. In the event that equipment is returned undamaged, the
+              deposit shall be refunded to Renter.</li>
+            <li>Additional fees, such as late return fees or damages, may be assessed and charged to the
+              Renter at the Company's discretion.</li>
+          </ol>
+        </li>
+
+        <li>Condition of Equipment
+          <ol type='a'>
+            <li>The Renter acknowledges that they have inspected the rented paddle board(s) and all
+              related equipment and have found them to be in good condition, free from defects or
+              damage.</li>
+            <li>The Renter agrees to return the paddle board(s) and equipment in the same condition
+              as they were received, normal wear and tear excepted.</li>
+          </ol>
+        </li>
+
+        <li>Responsibility of Renter
+          <ol type='a'>
+            <li>The Renter agrees to use the rented paddle board(s) and equipment in a safe and
+              responsible manner and in accordance with any instructions or guidelines provided by
+              the Company.</li>
+            <li>The Renter shall not use the paddle board(s) and equipment while under the influence
+              of medications, alcohol, or drugs.</li>
+            <li>The Renter shall ensure that each individual utilizing the equipment shall be required
+              to sign this Agreement. In the event the equipment is being used by a minor, a parent
+              or legal guardian is required to sign on behalf of the minor.</li>
+            <li>The Renter acknowledges that they have the necessary skills and experience to safely
+              operate the paddle board(s).</li>
+            <li>The Renter agrees to comply with all applicable laws and regulations while using the
+              paddle board(s).</li>
+          </ol>
+        </li>
+
+        <li>Assumption of Risk. The Renter acknowledges that there are inherent hazards and risks
+          associated with paddle board activities, including but not limited to:
+          <ol type='a'>
+            <li>Risk of injury from the activity and equipment, including the potential for permanent
+              disability and death.</li>
+            <li>Rollovers or falling that may cause cuts, broken bones, and other injuries, permanent
+              disability or death. iii. Exposure to water hydraulics or currents, hidden or obvious
+              obstructions, and/or debris that can cause drowning or other harm.</li>
+            <li>Possible equipment failure and/or malfunction.</li>
+            <li>Running into objects, persons, or animals, including barely submerged objects and
+              other hazards that are not visible.</li>
+            <li>Negligence, including operator error.</li>
+            <li>Prohibited use of equipment under the influence of any substance/alcohol.</li>
+            <li>Hazards related to collision, capsizing, sinking, or other hazards that may result in
+              exposure to the elements, hypothermia, impact of the body upon the water and/or
+              rocks, injection of water into body orifices, marine life forms, and/or drowning.</li>
+            <li>Cold water and heat-related injuries and illnesses, including but not limited to
+              hypothermia, hyperthermia, heat exhaustion, heat stroke, sunburn, and dehydration.</li>
+            <li>Exposure to outdoor elements, including inclement weather, lightning, severe and/or
+              varied wind, temperature, or weather conditions.</li>
+            <li>Attack by or encounter with insects, marine life forms, and/or animals.</li>
+            <li>Accidents or illnesses occurring in remote places where there are no available
+              medical facilities and rescue may be distant and time-consuming.</li>
+            <li>Fatigue, chill, and/or dizziness, which may diminish reaction time and increase the
+              risk of accidents.</li>
+            <li>Participation in activities that may include possible exposure to and illness from
+              COVID-19.</li>
+          </ol>
+        </li>
+
+        <p>The Renter acknowledges and affirms that they have been fully informed of and assumes the
+          inherent hazards and risks associated with paddle board activities as described above. The
+          Renter understands that the description of these risks is not complete, and that unknown or
+          unanticipated risks may result in injury, illness, or death.</p>
+
+        <li>Release of Liability Waiver of Claims, and Indemnity Agreement
+          <ol type='a'>
+            <li>In consideration for being permitted to participate in any paddle board activities, the
+              Renter hereby releases and holds harmless Wander Sports LLC, its members,
+              employees, representatives, and agents from any and all liability, claims, or causes of
+              action for personal injury, property damage, or wrongful death arising from the above
+              activities, whether caused by negligence or otherwise.</li>
+            <li>The Renter agrees to indemnify and hold Wander Sports LLC, its members,
+              employees, representatives, and agents harmless from any injury, disability, death,
+              loss, or damage to person or property that may occur as a result of engaging in the
+              above activities.</li>
+            <li>The Renter acknowledges that they are not relying on any oral or written
+              representations or statements made by Wander Sports LLC, other than what is set
+              forth in this Agreement.</li>
+            <li>This release shall be binding to the fullest extent permitted by law. If any provision of
+              this release is found to be unenforceable, the remaining terms shall be enforceable.</li>
+          </ol>
+        </li>
+
+        <li>Declaration of Fitness
+          <ol type='a'>
+            <li>The Renter declares that they will not participate in this activity if they have any
+              COVID-19 symptoms.</li>
+            <li>The Renter declares that they are physically fit and have no physical or mental
+              conditions that should preclude them from participating in the chosen activity.</li>
+            <li>The Renter declares that they are not participating against medical advice or treatment
+              and have not been diagnosed by a registered doctor as having a terminal illness.</li>
+            <li>The Renter further declares that in the event they feel ill, have any physical
+              complaints, or sustain an injury during the course of watercraft activities, they will
+              immediately notify and disembark from the vessel.</li>
+          </ol>
+        </li>
+      </ol>
+
+      <p>Renter name: <%= waiver.first_name %> <%= waiver.last_name %></p>
+
+      <p>Electronic Authorized Signature: <%= waiver.signature %></p>
+
+      <p>Date electronically signed: <%= waiver.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %></p>
+    <% end %>
+  <% end %>
+</div>
