@@ -20,6 +20,8 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem 'stripe'
 gem 'flatpickr'
+gem 'pg'
+gem 'rails_12factor'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -59,3 +61,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
