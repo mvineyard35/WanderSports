@@ -27,26 +27,51 @@
 	  background-color: rgba(226, 242, 255, 0.1); /* Overlay color */
 	  z-index: -999;
 	}
-    .container {
-      display: block;
-      width: 90%;
-      margin: 0 auto; /* Centers the container */
-      text-align: center; /* Optional: centers the content inside the container */
-    }
+    /* Container styling */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+  justify-content: center; /* Centers items horizontally */
+  width: 90%;
+  margin: 0 auto; /* Centers the container */
+  text-align: center; /* Optional: centers the content inside the container */
+}
 
-    .post {
-      display: inline-block;
-      padding: 2%;
-      margin: 2%;
-      width: 25%;
-      box-sizing: border-box;
-    }
+/* Post styling */
+.post {
+  flex: 1 1 calc(25% - 4%); /* Allows items to grow and shrink, with a base width of 25% minus margin space */
+  padding: 2%;
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  margin: 2%; /* Margin to ensure spacing between items */
+}
 
-    .post img {
-      width: 100%; /* Ensures the image takes the full width of the post */
-      height: 200px; /* Fixed height for all images */
-      object-fit: cover; /* Ensures the image covers the area without distortion */
-    }
+/* Image styling */
+.post img {
+  width: 100%; /* Ensures the image takes the full width of the post */
+  height: 200px; /* Fixed height for all images */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+/* Responsive behavior */
+@media (max-width: 1200px) {
+  .post {
+    flex: 1 1 calc(33.33% - 4%); /* Adjust base width to 33.33% minus margin space */
+  }
+}
+
+@media (max-width: 768px) {
+  .post {
+    flex: 1 1 calc(50% - 4%); /* Adjust base width to 50% minus margin space */
+  }
+}
+
+@media (max-width: 480px) {
+  .post {
+    flex: 1 1 100%; /* Stack items on top of each other on very small screens */
+    margin: 1%; /* Adjust margin for better spacing on small screens */
+  }
+}
+
   </style>
 </head>
 <body>

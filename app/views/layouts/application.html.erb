@@ -29,7 +29,8 @@ html, body {
   padding: 0 1rem; /* Adjust padding as needed */
   z-index: 999;
   width: 100%;
-  height: 9em;
+  height: auto;
+  flex-wrap: wrap;
 }
 
 .navbar-brand {
@@ -142,7 +143,7 @@ html, body {
 
 .footer-links {
   display: flex;
-  position: absolute;
+  flex-direction: column;
   right: 15rem; /* Position 15rem from the right side of the footer */
   text-align: center;
   padding-top: 1em;

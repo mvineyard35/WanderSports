@@ -34,25 +34,44 @@
 
 .methods {
   display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto new lines */
   justify-content: space-between;
   width: 80%;
   margin: auto;
 }
 
-.text {
-  display: flex;
-  align-items: center;
-  font-family: sans-serif;
-  font-weight: 100;
-  min-width: 20%;
+.methods .text {
+  flex: 1; /* Allows each text item to grow equally */
+  min-width: 200px; /* Ensures a minimum width for each item */
+  margin: 1%; /* Space between items */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.call-icon {
+  height: 2em;
 }
 
 .phone-number {
   text-decoration: none;
   color: #4A4A4A;
-  text-size: 1vw;
+  font-size: 1vw; /* Changed to font-size instead of text-size */
   margin-left: 1%;
 }
+
+@media (max-width: 768px) {
+  .methods {
+    flex-direction: column; /* Stack items vertically on small screens */
+    width: 100%; /* Ensure it takes full width on small screens */
+  }
+
+  .methods .text {
+    min-width: 100%; /* Ensure each item takes full width */
+    margin: 1% 0; /* Adjust margin for vertical stacking */
+  }
+}
+
+
+
 
 .locations {
   display: flex;
@@ -79,9 +98,7 @@
   width: 10em;
 }
 
-.call-icon {
-  height: 2em;
-}
+
 
 .svg-image {
   padding-bottom: 0;
