@@ -16,13 +16,13 @@
   .container-left h1 {
     font-family: sans-serif;
     font-weight: 400;
-    font-size: 4vw;
+    font-size: 7vh;
   }
 
   .container-right h1 {
     font-family: sans-serif;
     font-weight: 300;
-    font-size: 3vw;
+    font-size: 5vh;
     color: #4A4A4A;
     margin-left: 10%;
   }
@@ -171,7 +171,7 @@ input[type="number"] {
     .container-right li {
       font-family: sans-serif;
       font-weight: 100;
-      font-size: 1vw;
+      font-size: 2vh;
     }
 
    .checkout-button {
@@ -256,7 +256,7 @@ input[type="number"] {
 
     <h1>Order Summary</h1>
     <div style = 'display: block;'>
-      <p style="display: inline-block; margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 2vw; color: #4A4A4A">Order Total</p> <span id="subtotal" style="display: inline-block; margin-left: 30%; font-family: sans-serif; font-weight: 100; font-size: 2vw; color: #4A4A4A"><%= number_to_currency(@subtotal, unit: '$') %></span>
+      <p style="display: inline-block; margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 4vh; color: #4A4A4A">Order Total</p> <span id="subtotal" style="display: inline-block; margin-left: 30%; font-family: sans-serif; font-weight: 100; font-size: 4vh; color: #4A4A4A"><%= number_to_currency(@subtotal, unit: '$') %></span>
     </div>
 
   <div class = 'list'>
@@ -268,7 +268,7 @@ input[type="number"] {
   </div>
   
     <% if @move_to_waiver == 1 %>
-      <p style = 'margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 1vw; color: #4A4A4A; padding-bottom: 5%;'>You already filled out your registration.  Please fill out a waiver and/or pay or just show at your reserved time and do either in person.</p>
+      <p style = 'margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 2vh; color: #4A4A4A; padding-bottom: 5%;'>You already filled out your registration.  Please fill out a waiver and/or pay or just show at your reserved time and do either in person.</p>
       <%= link_to 'Add Waiver', waivers_new_path, class: 'checkout-button' %>
        <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
