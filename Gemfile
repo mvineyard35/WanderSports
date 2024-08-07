@@ -22,7 +22,7 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem 'stripe'
 gem 'flatpickr'
-gem 'net-pop'
+gem 'net-pop', '~> 0.1.2'
 
 group :production do
   gem 'pg'
