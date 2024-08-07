@@ -34,17 +34,21 @@ html, body {
 }
 
 .navbar-brand {
-  margin-right: auto;
+  flex: 1;
+  display: flex;
   padding-left: 2em;
   margin-top: 2.75em;
   z-index: 999;
+  background-color: green;
 }
 
 .navbar-collapse {
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   z-index: 999;
+  font-size: 1vw;
+  background-color: red;
 }
 
 .navbar-nav {
@@ -71,24 +75,24 @@ html, body {
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    z-index: 999;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: flex-start; /* Align items to start of the container */
+  }
+
+  .navbar-brand {
+    margin-right: 0; /* Remove right margin on small screens */
   }
 
   .navbar-collapse {
-    justify-content: center;
-    width: 100%;
-    z-index: 999;
+    width: 100%; /* Full width for collapse on small screens */
+    justify-content: center; /* Center align collapse items */
   }
 
   .navbar-nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center align links */
     width: 100%;
-    gap: 0;
-    z-index: 999;
   }
-
 }
 
 .footer {
@@ -434,11 +438,11 @@ html, body {
 
     <nav class="navbar">
   <%= link_to home_index_path, class: 'navbar-brand' do %>
-  <%= image_tag "logo.svg" %>
+  <%= image_tag "logo.svg", class: 'logo' %>
   <% end %>
 
   <div id="navbarNavAltMarkup" class="navbar-collapse">
-    <div class="navbar-nav ml-auto">
+    <div class="navbar-nav">
       <% if user_signed_in? %>
       <%= link_to 'Admin', home_view_path, class: 'nav-item nav-link', id: 'hover-link' %>
       <%= link_to 'Reservations', reservations_view_path, class: 'nav-item nav-link', id: 'hover-link' %>
