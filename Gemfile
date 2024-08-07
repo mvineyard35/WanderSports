@@ -23,6 +23,7 @@ gem "jbuilder"
 gem 'stripe'
 gem 'flatpickr'
 gem 'net-pop', '~> 0.1.2'
+gem "sqlite3", ">= 1.4"
 
 group :production do
   gem 'pg'
@@ -55,7 +56,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-  gem "sqlite3", ">= 1.4"
+  
 end
 
 group :development do
