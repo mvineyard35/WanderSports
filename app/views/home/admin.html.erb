@@ -1,20 +1,29 @@
 <style>
   .form {
     background-color: lightblue;
-    width: 25%;
+    width: 35%;
     padding: 3%;
     margin-left: 10%;
     margin-top: 2%;
   }
 
+  h1 {
+    font-size: 4vmin;
+    font-family: sans-serif;
+    font-weight: 100;
+  }
+
   .form-text {
     font-family: sans-serif;
     font-weight: 100;
-    font-size: 1.5vw;
+    font-size: 2vmin;
   }
 
   .button {
     margin-top: 2%;
+    font-size: 1.5vmin;
+    font-family: sans-serif;
+    font-weight: 100;
   }
 
   .link-div {
@@ -32,6 +41,9 @@
     background-color: darkblue;
     border-radius: 4px;
     color: whitesmoke;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 2vmin;
   }
 
 .td {
@@ -42,6 +54,16 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.label {
+  font-size: 1.75vmin;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+.input {
+  width: 50%;
 }
 
 </style>
@@ -55,11 +77,11 @@
   <p class = 'form-text'>This is to add images</p>
   <%= form_with url: home_create_image_path, method: :post do %>
   <div class = 'td'>
-    <%= label_tag :image, "Image" %>
-    <%= text_field_tag :image %>
+    <%= label_tag :image, "Image", class: 'label' %>
+    <%= text_field_tag :image, nil, class: 'input' %>
   </div>
   <div>
-    <%= submit_tag "Save Image", class: 'button' %>
+    <%= submit_tag "Save Image" %>
   </div>
 <% end %>
 
@@ -70,8 +92,8 @@
   <p class = 'form-text'>Any special information you want to temporarily display.<br>Could be special sale, holiday hours</p>
   <%= form_with url: home_create_special_path, method: :post do %>
   <div class = 'td'>
-    <%= label_tag :info, "Info" %>
-    <%= text_field_tag :info %>
+    <%= label_tag :info, "Info", class: 'label' %>
+    <%= text_field_tag :info, nil, class: 'input'  %>
   </div>
   <div>
     <%= submit_tag "Create Special", class: 'button' %>
@@ -85,12 +107,12 @@
   <p class = 'form-text'>This is for you inventory, if you add any items you can submit them here</p>
 	<%= form_with url: home_create_inventory_path, method: :post do %>
   <div class = 'td'>
-    <%= label_tag :equipment, "Equipment" %>
-    <%= text_field_tag :equipment %>
+    <%= label_tag :equipment, "Equipment", class: 'label'  %>
+    <%= text_field_tag :equipment, nil, class: 'input'  %>
   </div>
   <div class = 'td'>
-    <%= label_tag :quantity, "Quantity" %>
-    <%= number_field_tag :quantity %>
+    <%= label_tag :quantity, "Quantity", class: 'label'  %>
+    <%= number_field_tag :quantity, nil, class: 'input'  %>
   </div>
   <div>
     <%= submit_tag "Create Inventory", class: 'button' %>
@@ -105,16 +127,16 @@
   <p class = 'form-text'>This is to modify business hours</p>
 	<%= form_with url: home_create_hours_path, method: :post do %>
   <div class = 'td'>
-    <%= label_tag :mon_fri, "Monday - Friday" %>
-    <%= text_field_tag :mon_fri %>
+    <%= label_tag :mon_fri, "Monday - Friday", class: 'label'  %>
+    <%= text_field_tag :mon_fri, nil, class: 'input'  %>
   </div>
   <div class = 'td'>
-    <%= label_tag :sat, "Saturday" %>
-    <%= text_field_tag :sat %>
+    <%= label_tag :sat, "Saturday", class: 'label'  %>
+    <%= text_field_tag :sat, nil, class: 'input' %>
   </div>
   <div class = 'td'>
-    <%= label_tag :sun, "Sunday" %>
-    <%= text_field_tag :sun %>
+    <%= label_tag :sun, "Sunday", class: 'label'  %>
+    <%= text_field_tag :sun, nil, class: 'input'  %>
   </div>
   <div>
     <%= submit_tag "Save Hours", class: 'button' %>

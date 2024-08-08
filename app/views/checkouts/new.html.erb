@@ -16,13 +16,13 @@
   .container-left h1 {
     font-family: sans-serif;
     font-weight: 400;
-    font-size: 7vh;
+    font-size: 7vmin;
   }
 
   .container-right h1 {
     font-family: sans-serif;
     font-weight: 300;
-    font-size: 5vh;
+    font-size: 5vmin;
     color: #4A4A4A;
     margin-left: 10%;
   }
@@ -64,7 +64,7 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.5vmin;
   border-radius: 4px;
   transition: background-color 0.3s;
   margin: 0;
@@ -126,6 +126,7 @@ input[type="number"] {
   border: none;
   color: white;
   background-color: #5A80FF;
+  font-size: 1.4vmin;
 }
 
 .container-right {
@@ -161,7 +162,7 @@ input[type="number"] {
     ul.custom-bullets li::before {
       content: '•'; /* Custom bullet symbol */
       color: #5A80FF; /* Custom bullet color */
-      font-size: 1.5em; /* Custom bullet size */
+      font-size: 3vmin; /* Custom bullet size */
       position: absolute;
       left: 0;
       top: 0;
@@ -171,14 +172,14 @@ input[type="number"] {
     .container-right li {
       font-family: sans-serif;
       font-weight: 100;
-      font-size: 2vh;
+      font-size: 2vmin;
     }
 
    .checkout-button {
     display: inline-block;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 16px;  /* Adjust size as needed */
+    font-size: 2vmin;  /* Adjust size as needed */
     color: white;
     background-color: #6772e5;  /* Stripe's blue color */
     background-image: linear-gradient(180deg, #6772e5 0%, #555abf 100%);
@@ -204,30 +205,27 @@ input[type="number"] {
 <div class = 'container-left'>
   <h1>Cart</h1>
 
-  <div class = 'item-header'>
-    <p style = 'margin-left: 30%;'>Rental Item</p>
-    <p style = 'margin-left: 25%;'>Item Total</p>
-  </div>
+  
     <% @subtotal = 0 %>
     <% @cart_items.each do |item| %>
     <div class = 'item'>
 
       <div class = 'container-left-item'>
         <% stripe_product = Stripe::Product.retrieve(item.product_id) %>
-        <%= image_tag stripe_product.images.first, alt: item.product_name, style: 'height: 10em; width: auto;' %>
+        <%= image_tag stripe_product.images.first, alt: item.product_name, style: 'height: 17vmin; width: auto;' %>
       </div>
       <div class = 'container-left-item'>
-        <span style = 'font-family: sans-serif; font-weight: 400;'><%= item.product_name %></span><br>
-        <span style = 'font-family: sans-serif; font-weight: 100;'><%= item.product_description %></span><br><br>
+        <span style = 'font-family: sans-serif; font-weight: 400; font-size: 4vmin;'><%= item.product_name %></span><br>
+        <span style = 'font-family: sans-serif; font-weight: 100;font-size: 3vmin;'><%= item.product_description %></span><br><br>
 
         <%= button_to 'Nothing', delete_item_checkouts_path(item), method: :delete, data: { confirm: 'Are you sure'}, remote: true, style: 'display:none' %>
 
         <%= form_with model: item, url: update_items_checkouts_path(item), method: :patch, local: false, data: { remote: true } do |f| %>
   <div style="text-align: left; width: 100%; display: flex; align-items: center; margin-bottom: 10px;">
-    <%= label_tag :quantity, "Quantity", style: "margin-right: 10px;" %>
+    <%= label_tag :quantity, "Quantity", style: "margin-right: 10px; font-size: 2vmin" %>
     <div class="buttons">
       <button type="button" class="decrease quantity-button">-</button>
-      <input type="number" name="cart_item[quantity]" class="quantity" value="<%= item.quantity %>" min="1" style="text-align: center; width: 40px; margin: 0 5px;" />
+      <input type="number" name="cart_item[quantity]" class="quantity" value="<%= item.quantity %>" min="1" style="text-align: center; width: 10vmin; margin: 0 5px;" />
       <button type="button" class="increase quantity-button">+</button>
     </div>
   </div>
@@ -243,7 +241,7 @@ input[type="number"] {
           </div>
           </div>
         </div>
-        <div class = 'container-left-item' style = 'margin-left: 5%;'>
+        <div class = 'container-left-item' style = 'margin-left: 5%; font-family: sans-serif; font-weight: 100; font-size: 3.5vmin'>
       <%= number_to_currency(item.price, unit: '$') %>
     </div> 
     </div><% end %>
@@ -256,7 +254,7 @@ input[type="number"] {
 
     <h1>Order Summary</h1>
     <div style = 'display: block;'>
-      <p style="display: inline-block; margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 4vh; color: #4A4A4A">Order Total</p> <span id="subtotal" style="display: inline-block; margin-left: 30%; font-family: sans-serif; font-weight: 100; font-size: 4vh; color: #4A4A4A"><%= number_to_currency(@subtotal, unit: '$') %></span>
+      <p style="display: inline-block; margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 4vmin; color: #4A4A4A">Order Total</p> <span id="subtotal" style="display: inline-block; margin-left: 30%; font-family: sans-serif; font-weight: 100; font-size: 4vmin; color: #4A4A4A"><%= number_to_currency(@subtotal, unit: '$') %></span>
     </div>
 
   <div class = 'list'>
@@ -268,7 +266,7 @@ input[type="number"] {
   </div>
   
     <% if @move_to_waiver == 1 %>
-      <p style = 'margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 2vh; color: #4A4A4A; padding-bottom: 5%;'>You already filled out your registration.  Please fill out a waiver and/or pay or just show at your reserved time and do either in person.</p>
+      <p style = 'margin-left: 10%; font-family: sans-serif; font-weight: 100; font-size: 2vmin; color: #4A4A4A; padding-bottom: 5%;'>You already filled out your registration.  Please fill out a waiver and/or pay or just show at your reserved time and do either in person.</p>
       <%= link_to 'Add Waiver', waivers_new_path, class: 'checkout-button' %>
        <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"

@@ -9,6 +9,7 @@
 h1, p, li, ol {
   font-family: sans-serif;
   font-weight: 100;
+  font-size: 2vmin;
 }
 
 .button-container {
@@ -39,6 +40,7 @@ h1, p, li, ol {
   display: inline-block;    /* Ensure inline-block display for consistency */
   text-align: center;       /* Center text horizontally */
   cursor: pointer;          /* Add pointer cursor for better UX */
+  font-size: 2vmin;
 }
 
 .btn-primary:hover, .skip-button:hover {
@@ -66,6 +68,14 @@ h1, p, li, ol {
   padding-bottom: 1%;
   padding-left: 2%;
   padding-right: 2%;
+}
+
+.label {
+  font-size: 2vmin;
+}
+
+.input {
+  font-size: 2vmin;
 }
 
 </style>
@@ -201,30 +211,30 @@ and voluntarily agree to be bound by its terms and conditions.</p>
 <%= form_with model: @waiver, url: waivers_path, local: true do |form| %>
   
   <div>
-    <%= form.label :first_name, "Renter's First Name" %>
-    <%= form.text_field :first_name, required: true %>
+    <%= form.label :first_name, "Renter's First Name", class: 'label' %>
+    <%= form.text_field :first_name, required: true, class: 'input' %>
   </div>
   <div>
-    <%= form.label :last_name, "Renter's Last Name" %>
-    <%= form.text_field :last_name, required: true %>
+    <%= form.label :last_name, "Renter's Last Name", class: 'label'  %>
+    <%= form.text_field :last_name, required: true, class: 'input'  %>
   </div>
 
   <div>
-    <%= form.label :guardian_name, "Guardian name if renter is under the age of 18" %>
-    <%= form.text_field :guardian_name %>
+    <%= form.label :guardian_name, "Guardian name if renter is under the age of 18", class: 'label'  %>
+    <%= form.text_field :guardian_name, class: 'input'  %>
   </div>
     
     <%= form.hidden_field :email %>
     <%= form.hidden_field :birth_date %>
 
   <div>
-    <%= form.label :signature, "Typed Signature of Renter or Guardian if Renter is under the age of 18" %>
-    <%= form.text_area :signature, placeholder: "Type your full name as a signature", required: true %>
+    <%= form.label :signature, "Typed Signature of Renter or Guardian if Renter is under the age of 18", class: 'label'  %>
+    <%= form.text_area :signature, placeholder: "Type your full name as a signature", required: true, class: 'input'  %>
   </div>
 
   <div>
     <%= form.check_box :authorized, required: true %>
-    <%= form.label :authorized, "I authorize the typed name above as my legal signature." %>
+    <%= form.label :authorized, "I authorize the typed name above as my legal signature.", class: 'label'  %>
   </div>
 
   <%= form.hidden_field :temp_user_id %>
