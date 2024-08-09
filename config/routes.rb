@@ -77,4 +77,5 @@ end
   get 'waivers/view'
   get 'reservations/past'
   post '/webhooks/stripe', to: 'webhooks#stripe'
+  post 'checkout-session', to: 'checkouts#create_session'
 end

@@ -27,7 +27,10 @@ class CheckoutsController < ApplicationController
     )
 
     redirect_to @session.url, allow_other_host: true
-
+    rescue Stripe::StripeError => e
+        flash[:error] = e.message
+        render :new
+      end
     # Create a reservation record
     @reservation = Reservation.new(reservation_params)
     @reservation.paid = true # Set paid to true as the payment is being processed
