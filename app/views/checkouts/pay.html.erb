@@ -275,7 +275,7 @@ input[type="number"] {
     <div class = 'stripe-ck'>
     <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"
+    data-key="Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']"
     data-description="Total amount: <%= number_to_currency(@cart_items.sum { |item| item.price * item.quantity }, unit: '$') %>"
     data-amount="<%= @cart_items.sum { |item| item.price * item.quantity * 100 } %>"
     data-locale="auto"
