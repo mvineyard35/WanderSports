@@ -432,14 +432,16 @@ html, body {
 @media (max-width: 720px) {
   .navbar-toggler {
     display: block; /* Show the burger menu button */
+    position: relative;
+    margin-left: 5%;
   }
   .navbar-collapse {
     display: none; /* Hide the navbar links */
     flex-direction: column;
     width: 15%;
-    position: absolute;
+    position: relative;
     top: 10%;
-    left: 0;
+    margin-left: 15%;
     background-color: rgba(255, 255, 255, .7);
     z-index: 1000;
   }
@@ -449,7 +451,7 @@ html, body {
   }
   .nav-item {
     margin: 0;
-    padding: 2vmin;
+    padding: 4vmin;
     text-align: center;
   }
 }
@@ -482,7 +484,7 @@ html, body {
   <% end %>
 
   <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"><%= image_tag 'menu.svg', style: 'height: 4vmin;'%></span>
+    <span class="navbar-toggler-icon"><%= image_tag 'menu.svg', style: 'height: 6vmin;'%></span>
   </button>
 
   <div id="navbarNavAltMarkup" class="navbar-collapse">
