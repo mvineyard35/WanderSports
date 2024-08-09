@@ -3,40 +3,46 @@ class CheckoutsController < ApplicationController
   def create
     # Find the cart associated with the temp user
     @cart = Cart.find_by(temp_user_id: @temp_user.id)
-    
+
     if @cart.nil?
       flash[:error] = "Cart not found"
       redirect_to products_index_path and return
     end
 
-    @session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: @cart.cart_items.map do |item|
-        {
-          price_data: {
-            currency: 'usd',
-            product: item.product_id,
-            unit_amount: (item.price * 100).to_i, # Ensure price is in cents
-          },
-          quantity: item.quantity,
-        }
-      end,
-      mode: 'payment',
-      success_url: success_url,
-      cancel_url: cancel_url,
-    )
-
-    redirect_to @session.url, allow_other_host: true
-    
     # Create a reservation record
     @reservation = Reservation.new(reservation_params)
-    @reservation.paid = true # Set paid to true as the payment is being processed
+    @reservation.paid = false # Set paid to false until payment is successful
 
     if @reservation.save
-      # Proceed with Stripe checkout
-      # Stripe payment logic here
+      begin
+        # Create Stripe Checkout session
+        @session = Stripe::Checkout::Session.create(
+          payment_method_types: ['card'],
+          line_items: @cart.cart_items.map do |item|
+            {
+              price_data: {
+                currency: 'usd',
+                product_data: {
+                  name: item.product_name, # Use product name if available
+                  # or use Stripe price_id if you have it
+                  # price: item.stripe_price_id
+                },
+                unit_amount: (item.price * 100).to_i, # Ensure price is in cents
+              },
+              quantity: item.quantity,
+            }
+          end,
+          mode: 'payment',
+          success_url: success_url,
+          cancel_url: cancel_url,
+        )
 
-      redirect_to success_path, notice: "Reservation created and payment processed successfully."
+        # Redirect to Stripe Checkout
+        redirect_to @session.url, allow_other_host: true
+      rescue Stripe::StripeError => e
+        flash[:error] = e.message
+        render :new
+      end
     else
       render :new, alert: "Error creating reservation. Please try again."
     end
