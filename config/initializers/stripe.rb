@@ -1,3 +1,4 @@
 # config/initializers/stripe.rb
 Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
+STRIPE_PUBLISHABLE_KEY = ENV['STRIPE_TEST_PUBLISHABLE_KEY']
 
