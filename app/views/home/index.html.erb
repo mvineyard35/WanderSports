@@ -146,24 +146,28 @@
 }
 
 .special {
-  height: 10vw;  /* Adjust as needed for size */
-  width: 10vw;   /* Adjust as needed for size */
-  background-color: red;
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  clip-path: polygon(20% 67%, 57% 100%, 94% 68%, 57% 0);
+  height: auto;  /* Adjust as needed for size */
+  width: 60%;
+  position: relative;
+  margin-right: 0;
+  padding-right: 0;
+  margin-left: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .special-text {
   padding: 10%;
   font-family: sans-serif;
-  font-size: 2vmin;
-  color: white;
+  font-weight: 100;
+  font-size: 4vmin;
+  color: black;
   text-align: center;  /* Center text inside the star */
+  width: 60%;
 }
 
 .map-icon {
@@ -173,7 +177,7 @@
 </style>
 
 	<% @specials.each do |special| %>
-      <div class = 'special'>
+      <div class="special" style="background-image: url(<%= asset_path('special.png') %>);">
         <p class = 'special-text'><%= special.info %></p>
       </div>
     <% end %>
