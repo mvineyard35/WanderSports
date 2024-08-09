@@ -1,0 +1,10 @@
+<h1>New Reservation Received</h1>
+<p>A new reservation has been made. Here are the details:</p>
+<ul>
+  <li>Customer Name: <%= @reservation.first %> <%= @reservation.last %></li>
+  <li>Email: <%= @reservation.email %></li>
+  <li>Date: <%= @reservation.start_date %></li>
+  <li>Start Time: <%= @reservation.start_time_hour %>:<%= @reservation.start_time_minute %> <%= @reservation.start_time_period %></li>
+  <li>End Time: <%= @reservation.end_time_hour %>:<%= @reservation.end_time_minute %> <%= @reservation.end_time_period %></li>
+  <!-- Add more reservation details as needed -->
+</ul>

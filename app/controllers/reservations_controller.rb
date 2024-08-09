@@ -14,6 +14,8 @@ class ReservationsController < ApplicationController
     @reservation.temp_user_id = @temp_user.id
 
     if @reservation.save
+      ReservationMailer.reservation_confirmation(@reservation).deliver_later
+      ReservationMailer.reservation_notification(@reservation).deliver_later
       redirect_to waivers_new_path, notice: "Reservation was successfully created."
     else
       flash.now[:alert] = 'Date cannot be in the past'
