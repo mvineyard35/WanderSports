@@ -270,7 +270,7 @@ input[type="number"] {
       <%= link_to 'Add Waiver', waivers_new_path, class: 'checkout-button' %>
        <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"
+          data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
           data-description="Total amount: <%= number_to_currency(@cart_items.sum { |item| item.price * item.quantity }, unit: '$') %>"
           data-amount="<%= @cart_items.sum { |item| item.price * item.quantity * 100 } %>"
           data-locale="auto"
