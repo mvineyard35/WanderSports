@@ -415,6 +415,43 @@ html, body {
   height: 13vmin;
 }
 
+.navbar-toggler {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-toggler-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+}
+
+@media (max-width: 720px) {
+  .navbar-toggler {
+    display: block; /* Show the burger menu button */
+  }
+  .navbar-collapse {
+    display: none; /* Hide the navbar links */
+    flex-direction: column;
+    width: 15%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    background-color: rgba(255, 255, 255, .7);
+    z-index: 1000;
+  }
+  .navbar-collapse.show {
+    display: flex; /* Show the navbar links when toggled */
+    z-index: 999;
+  }
+  .nav-item {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
 
     </style>
 
@@ -443,6 +480,10 @@ html, body {
   <%= image_tag "logo.svg", class: 'logo' %>
   <% end %>
 
+  <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><%= image_tag 'veteran.svg', style: 'height: 4vmin;'%></span>
+  </button>
+
   <div id="navbarNavAltMarkup" class="navbar-collapse">
     <div class="navbar-nav">
       <% if user_signed_in? %>
@@ -461,6 +502,16 @@ html, body {
     </div>
   </div>
 </nav>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggler = document.querySelector('.navbar-toggler');
+  const collapse = document.querySelector('.navbar-collapse');
+
+  toggler.addEventListener('click', function() {
+    collapse.classList.toggle('show');
+  });
+});
+</script>
 
 <div class="flash-messages">
     <% flash.each do |type, message| %>

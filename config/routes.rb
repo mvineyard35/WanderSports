@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "webhooks/stripe"
   devise_for :users
 
   # Health check
@@ -75,4 +76,5 @@ end
   get 'checkouts/pay'
   get 'waivers/view'
   get 'reservations/past'
+  post '/webhooks/stripe', to: 'webhooks#stripe'
 end
