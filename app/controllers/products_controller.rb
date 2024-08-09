@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_temp_user, only: [:add_to_cart]
   def index
-    @products = Stripe::Product.list(limit: 12).data
+    @products = Stripe::Product.list(limit: 12, active: true).data
+
   end
 
   def add_to_cart
