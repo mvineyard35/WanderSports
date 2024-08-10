@@ -47,3 +47,25 @@ class WebhooksController < ApplicationController
     end
   end
 end
+
+private
+
+def handle_checkout_session_completed(session)
+  Rails.logger.info("Processing checkout session completed event: #{session.inspect}")
+
+  customer_email = session['customer_details']['email']
+  reservation = Reservation.find_by(email: customer_email)
+
+  if reservation
+    reservation.update(paid: true)
+    Rails.logger.info("Updated reservation for email: #{customer_email}")
+    
+    # Send payment confirmation to the customer
+    ReservationMailer.payment_confirmation(reservation).deliver_later
+    
+    # Send payment notification to yourself
+    ReservationMailer.payment_notification(reservation).deliver_later
+  else
+    Rails.logger.warn("No reservation found for email: #{customer_email}")
+  end
+end

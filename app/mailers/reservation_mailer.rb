@@ -11,4 +11,20 @@ class ReservationMailer < ApplicationMailer
     @reservation = reservation
     mail(to: 'mvineyard@paaimetrics.com', subject: 'New Reservation Received')
   end
+
+  def payment_confirmation(reservation)
+    @reservation = reservation
+    mail(
+      to: @reservation.email,
+      subject: 'Payment Confirmation'
+    )
+  end
+
+  def payment_notification(reservation)
+    @reservation = reservation
+    mail(
+      to: 'mvineyard@paaimetrics.com', # Your email address
+      subject: 'New Payment Received'
+    )
+  end
 end
