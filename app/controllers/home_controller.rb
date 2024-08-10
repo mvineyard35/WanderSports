@@ -15,6 +15,7 @@ end
   end
   def index
     @specials = Special.all
+    @hours = Hour.all
   end
   def about
   end
