@@ -1,30 +1,23 @@
 class ReservationMailer < ApplicationMailer
-  default from: 'no-reply@wandersportsnc.com' # Set your default sender email here
+  default from: 'noreply.wandersportsnc@gmail.com'
 
   def reservation_confirmation(reservation)
     @reservation = reservation
-    @customer_email = reservation.email
-    mail(to: @customer_email, subject: 'Your Reservation Confirmation')
+    mail(to: @reservation.email, subject: 'Your Reservation Confirmation')
   end
 
   def reservation_notification(reservation)
     @reservation = reservation
-    mail(to: 'mvineyard@paaimetrics.com', subject: 'New Reservation Received')
+    mail(to: 'wandersportsnc@gmail.com', subject: 'New Reservation Notification')
   end
 
   def payment_confirmation(reservation)
     @reservation = reservation
-    mail(
-      to: @reservation.email,
-      subject: 'Payment Confirmation'
-    )
+    mail(to: @reservation.email, subject: 'Payment Confirmation')
   end
 
   def payment_notification(reservation)
     @reservation = reservation
-    mail(
-      to: 'mvineyard@paaimetrics.com', # Your email address
-      subject: 'New Payment Received'
-    )
+    mail(to: 'wandersportsnc@gmail.com', subject: 'New Payment Received')
   end
 end

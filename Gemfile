@@ -25,6 +25,7 @@ gem 'flatpickr'
 gem 'net-pop', '~> 0.1.2'
 gem "sqlite3", ">= 1.4"
 
+
 group :production do
   gem 'pg'
   gem 'rails_12factor', group: :production

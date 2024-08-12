@@ -41,7 +41,8 @@ class WebhooksController < ApplicationController
     if reservation
       reservation.update(paid: true)
       Rails.logger.info("Updated reservation for email: #{customer_email}")
-      # Optional: ReservationMailer.confirmation(reservation).deliver_now
+      ReservationMailer.payment_confirmation(reservation).deliver_now
+      ReservationMailer.payment_notification(reservation).deliver_now
     else
       Rails.logger.warn("No reservation found for email: #{customer_email}")
     end
