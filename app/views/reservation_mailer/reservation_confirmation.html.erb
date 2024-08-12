@@ -4,6 +4,6 @@
 <ul>
   <li>Date: <%= @reservation.start_date %></li>
   <li>Start Time: <%= @reservation.start_time_hour %>:<%= @reservation.start_time_minute %> <%= @reservation.start_time_period %></li>
-  <li>End Time: <%= @reservation.end_time_hour %>:<%= @reservation.end_time_minute %> <%= @reservation.end_time_period %></li>
+  <li>End Time: <%= @reservation.end_time_hour %>:<%= sprintf('%02d', @reservation.end_time_minute.to_i) %> <%= @reservation.end_time_period %></li>
   <!-- Add more reservation details as needed -->
 </ul>

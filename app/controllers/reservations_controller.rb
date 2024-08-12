@@ -52,8 +52,7 @@ private
   def reservation_params
   params.permit(
     :first, :last, :email, :phone_number, :birth, :start_date, :end_date,
-    :start_time_hour, :start_time_minute, :start_time_period,
-    :end_time_hour, :end_time_minute, :end_time_period, :temp_user_id
+    :start_time_hour, :start_time_minute, :start_time_period, :temp_user_id
   )
 end
   

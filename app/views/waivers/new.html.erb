@@ -96,7 +96,6 @@ the terms and conditions set forth below:</p>
     <ol type='a'>
       <li>The rental period shall begin on <%= @reservation.start_date %> at <%= @reservation.start_time_hour%>:<%= sprintf('%02d', @reservation.start_time_minute.to_i) %> <%= @reservation.start_time_period%>
 .</li>
-      <li>The rental period shall end on <%= @reservation.end_date %> at <%= @reservation.end_time_hour%>:<%= sprintf('%02d', @reservation.end_time_minute.to_i) %> <%= @reservation.end_time_period%></li>
       <li>Any extensions to the rental period must be agreed upon in writing by both parties.</li>
     </ol>
   </li>
