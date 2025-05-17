@@ -38,5 +38,3 @@ end
 # ✅ Register the custom delivery method properly
 ActionMailer::Base.add_delivery_method :trustifi_mailer, TrustifiMailer
 
-# ✅ Set delivery method
-Rails.application.config.action_mailer.delivery_method = :trustifi_mailer

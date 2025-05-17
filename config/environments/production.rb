@@ -6,15 +6,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.us-west-1.mailertogo.net',
-    port: 587,
-    user_name: ENV['MAILERTOGO_SMTP_USER'],
-    password: ENV['MAILERTOGO_SMTP_PASSWORD'],
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+ config.action_mailer.delivery_method = :trustifi_mailer
+
 
   # Ensure emails are delivered
   config.action_mailer.perform_deliveries = true
