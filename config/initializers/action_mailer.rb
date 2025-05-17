@@ -3,20 +3,20 @@ require 'uri'
 require 'json'
 
 class TrustifiMailer
-  def self.deliver!(mail)
+  def initialize(values)
+    @settings = values
+  end
+
+  def deliver!(mail)
     uri = URI.parse("https://be.trustifi.com/api/i/v1/email")
 
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
     request["X-Trustifi-Api-Key"] = ENV['TRUSTIFI_API_KEY']
     request["X-Trustifi-Secret-Key"] = ENV['TRUSTIFI_SECRET_KEY']
-    
+
     request.body = {
-      "recipients": [
-        {
-          "email": mail.to.first
-        }
-      ],
+      "recipients": [{ "email": mail.to.first }],
       "title": mail.subject,
       "html": mail.body.raw_source,
       "from": {
@@ -35,4 +35,8 @@ class TrustifiMailer
   end
 end
 
+# ✅ Register the custom delivery method properly
+ActionMailer::Base.add_delivery_method :trustifi_mailer, TrustifiMailer
+
+# ✅ Set delivery method
 Rails.application.config.action_mailer.delivery_method = :trustifi_mailer
