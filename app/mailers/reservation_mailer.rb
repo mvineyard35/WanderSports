@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-  default from: 'noreply.wandersportsnc@gmail.com'
+  default from: 'wandersportsnc@gmail.com'
 
   def reservation_confirmation(reservation)
     @reservation = reservation
