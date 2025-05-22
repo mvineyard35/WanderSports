@@ -113,13 +113,13 @@ class CheckoutsController < ApplicationController
 
   def update_items
     @cart = Cart.find_by(temp_user_id: @temp_user.id)
-  @cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
 
-  if @cart_item.update(item_params)
-    respond_to do |format|
-      format.html { redirect_to checkouts_new_path, notice: 'Item updated successfully' }
-      format.js # Respond with JavaScript
-    end
+    if @cart_item.update(item_params)
+      respond_to do |format|
+        format.html { redirect_to checkouts_new_path, notice: 'Item updated successfully' }
+        format.js # Respond with JavaScript
+      end
   else
     render :edit_items
   end

@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
 
   if stripe_product
     # Fetch the price from Stripe. This assumes you're using a Price object related to the Product.
-    stripe_price = Stripe::Price.list(product: stripe_product.id).data.first
+    stripe_prices = Stripe::Price.list(product: stripe_product.id, active: true).data
+    stripe_price = stripe_prices.first
     price_cents = stripe_price&.unit_amount || 0  # Adjust as needed based on Stripe's response
     product_name = stripe_product.name
     price = (price_cents / 100.0).to_i
